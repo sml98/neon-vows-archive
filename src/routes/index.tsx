@@ -1,24 +1,36 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
     <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+      className="flex min-h-dvh items-center justify-center px-4"
+      style={{ backgroundColor: "var(--neon-bg)" }}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+      <div
+        className="w-full max-w-md p-6 sm:p-8 text-center border-2 border-[var(--neon-pink)] bg-black/60 font-terminal text-white"
+        style={{ boxShadow: "var(--shadow-neon-pink)" }}
+      >
+        <h1
+          className="font-display text-sm sm:text-base neon-text-pink leading-relaxed mb-4"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          READY PLAYER ONE?
+        </h1>
+        <p className="text-lg sm:text-xl mb-6 leading-snug">
+          &gt; Uma aventura neon em 10 fases aguarda.
+        </p>
+        <Link
+          to="/aventura"
+          className="inline-block font-display text-xs uppercase tracking-widest px-5 py-3 border-2 border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:bg-[var(--neon-cyan)]/10 active:scale-95 transition-transform"
+          style={{ boxShadow: "var(--shadow-neon-cyan)" }}
+        >
+          [ INICIAR ]
+        </Link>
+      </div>
     </div>
   );
 }
