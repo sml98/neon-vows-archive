@@ -11,12 +11,13 @@ export function Phase03Pact({ onNext, onBeep }: { onNext: () => void; onBeep: (k
       </h2>
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Antes de avançarmos, um juramento é necessário:
+          &gt; Antes de avançar, o sistema exige um juramento sagrado:
           <br />
           <br />
-          &gt; Você promete dividir pelo menos um quadradinho desse chocolate com o Samuka?
+          &gt; Você promete dividir pelo menos UM quadradinho desse chocolate com o Samuka?
         </p>
       </CyberTextBox>
+
 
       {!refused ? (
         <div className="flex flex-col gap-3 w-full">
@@ -43,9 +44,10 @@ export function Phase03Pact({ onNext, onBeep }: { onNext: () => void; onBeep: (k
         <div className="w-full flex flex-col gap-3">
           <CyberTextBox accent="pink">
             <p className="text-[var(--neon-pink)]">
-              &gt; "Você errou, que maldade! Mas como já sabe, podemos aprender um com o outro e tentar mesmo assim... e juntos, sendo a melhor dupla, acertamos sempre o nosso futuro! ❤"
+              &gt; "Errrrouu! kkk mas relaxa — a gente é aquela dupla que mesmo perdendo uma partida, sempre sai vencendo a campanha inteira. Bora junto? ❤"
             </p>
           </CyberTextBox>
+
           <NeonButton
             variant="cyan"
             onClick={() => {

@@ -30,8 +30,9 @@ export function Phase06Quiz2({ onNext, onBeep }: { onNext: () => void; onBeep: (
         VERIFICAÇÃO DE MEMÓRIA (2/3)
       </h2>
       <CyberTextBox accent="cyan">
-        <p>&gt; Qual foi o nosso primeiro local de encontro?</p>
+        <p>&gt; Onde foi o cenário do nosso primeiro encontro? (uma palavra basta, meu amor)</p>
       </CyberTextBox>
+
 
       <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
         <CyberInput
@@ -49,7 +50,7 @@ export function Phase06Quiz2({ onNext, onBeep }: { onNext: () => void; onBeep: (
 
       {error && (
         <p role="alert" aria-live="polite" className="text-[var(--neon-pink)] font-terminal text-lg">
-          &gt; bora exercitar mais essa memória aí meu bem! SZ
+          &gt; hmmm... vamos exercitar essa memória, moça! dica: tinha vitrine, tinha praça de alimentação, e tinha um cara nervoso te esperando 😅
         </p>
       )}
     </form>

@@ -21,8 +21,9 @@ export function Phase07BodyParts({ onNext, onBeep }: { onNext: () => void; onBee
         ANÁLISE DE ATRAÇÃO (3/3)
       </h2>
       <CyberTextBox accent="cyan">
-        <p>&gt; Qual é a parte que eu mais gosto em você?</p>
+        <p>&gt; Escolhe uma parte sua que você acha que eu mais amo. Vou te contar um segredo depois. 👀</p>
       </CyberTextBox>
+
 
       <div className="grid grid-cols-2 gap-3 w-full">
         {PARTS.map((p) => (

@@ -39,11 +39,12 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
 
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Acesso restrito: Camila.
+          &gt; Acesso restrito: apenas Camila.
           <br />
-          &gt; Insira o código temporal para descriptografar nosso mapa:
+          &gt; Insira o código temporal pra desbloquear a nossa próxima fase:
         </p>
       </CyberTextBox>
+
 
       <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
         <CyberInput
@@ -73,10 +74,11 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
       {showHint && (
         <CyberTextBox accent="pink">
           <p className="italic text-[var(--neon-pink)]">
-            "O dia em que me entreguei à minha futura felicidade...!"
+            "O dia em que apertei START na melhor coop da minha vida... foi com você."
           </p>
         </CyberTextBox>
       )}
+
 
       <NeonButton type="submit" variant="cyan" onClick={() => onBeep("click")}>
         [ UNLOCK TERMINAL ]

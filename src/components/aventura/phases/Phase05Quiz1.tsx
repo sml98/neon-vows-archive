@@ -12,19 +12,20 @@ export function Phase05Quiz1({ onNext, onBeep }: { onNext: () => void; onBeep: (
       </h2>
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Para confirmar a sua identidade como minha dupla perfeita, responda:
+          &gt; Pra confirmar que você é mesmo a minha dupla oficial, responde aí:
           <br />
           <br />
-          &gt; Quem é mais provável de dormir primeiro no meio de um filme?
+          &gt; Quem apaga primeiro no meio de um filme, mesmo tendo escolhido o filme?
         </p>
       </CyberTextBox>
+
 
       <div className="flex flex-col gap-3 w-full">
         <NeonButton
           variant="pink"
           onClick={() => {
             onBeep("error");
-            setError("> não minta mulher kkk");
+            setError("> aaaah, não minta pra mim mulher kkkk quem sempre apaga é você e você sabe disso ❤");
           }}
         >
           &gt; SAMUKA

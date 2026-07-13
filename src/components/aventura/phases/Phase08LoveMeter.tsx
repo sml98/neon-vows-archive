@@ -25,9 +25,10 @@ export function Phase08LoveMeter({ onNext, onBeep }: { onNext: () => void; onBee
       </h2>
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Você é o glitch mais lindo do meu sistema. Responda rápido: quanto você acha que eu te amo?
+          &gt; Diagnóstico rápido, moça: em qual porcentagem você acha que eu te amo hoje?
         </p>
       </CyberTextBox>
+
 
       <div className="grid grid-cols-2 gap-3 w-full">
         {OPTIONS.map((v) => (

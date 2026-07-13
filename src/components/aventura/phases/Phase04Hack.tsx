@@ -28,11 +28,12 @@ export function Phase04Hack({ onNext, onBeep }: { onNext: () => void; onBeep: (k
       </h2>
       <CyberTextBox accent="cyan">
         <p>
-          &gt; O sistema exige uma prova de esforço.
+          &gt; Firewall detectado. O sistema pede prova de dedicação.
           <br />
-          &gt; Clique no botão rapidamente para encher a barra de energia e hackear a próxima fase!
+          &gt; Clique rápido pra sobrecarregar o servidor do meu coração e liberar a próxima fase!
         </p>
       </CyberTextBox>
+
 
       <ProgressBar value={progress} segments={HACK_CLICKS_REQUIRED} />
 
