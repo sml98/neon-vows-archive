@@ -1,6 +1,6 @@
 import { CyberTextBox } from "../CyberTextBox";
 import { Caret } from "../Caret";
-import { ParticleField } from "../ParticleField";
+import coupleNight from "@/assets/couple-night.png.asset.json";
 
 export function Phase10Finale() {
   return (
@@ -9,34 +9,37 @@ export function Phase10Finale() {
         MAIN FRAME UNLOCKED
       </h2>
 
-      <div className="relative w-full aspect-[4/3] border-2 border-[var(--neon-cyan)] shadow-[var(--shadow-neon-cyan)] overflow-hidden">
+      <div className="relative w-full border-2 border-[var(--neon-cyan)] shadow-[var(--shadow-neon-cyan)] overflow-hidden">
+        <img
+          src={coupleNight.url}
+          alt="Nós dois, sob as luzes da noite"
+          className="block w-full h-auto"
+          style={{ imageRendering: "pixelated" }}
+        />
         <div
-          className="absolute inset-0"
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
           style={{
-            background:
-              "conic-gradient(from 0deg at 50% 50%, oklch(0.72 0.32 330 / 0.9), oklch(0.86 0.19 200 / 0.9), oklch(0.72 0.32 330 / 0.9))",
+            backgroundImage:
+              "repeating-linear-gradient(to bottom, transparent 0 3px, oklch(0 0 0 / 0.32) 3px 4px)",
           }}
         />
         <div
           aria-hidden
-          className="absolute inset-0"
+          className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage:
-              "repeating-linear-gradient(to bottom, transparent 0 3px, oklch(0 0 0 / 0.35) 3px 4px)",
+            background:
+              "radial-gradient(ellipse at center, transparent 55%, oklch(0 0 0 / 0.55) 100%)",
           }}
         />
-        <ParticleField />
-        <div className="absolute inset-x-0 bottom-2 text-center font-terminal text-lg text-white/90 drop-shadow">
-          {"// insira nossa foto aqui //"}
-        </div>
       </div>
 
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Nenhuma engine de última geração renderiza algo tão perfeito quanto você. Eu te amo infinitamente, Camila.
+          &gt; Nenhuma engine renderiza algo tão perfeito quanto você ao meu lado.
           <br />
           <br />
-          &gt; Obrigado por ser a melhor dupla que o universo codificou para mim. <Caret color="cyan" />
+          &gt; Obrigado por ser a melhor coop que o universo já compilou pra mim. Te amo em todos os pixels, em todos os frames, em todos os finais possíveis. <Caret color="cyan" />
         </p>
       </CyberTextBox>
     </div>
