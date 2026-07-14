@@ -51,7 +51,6 @@ export function SentenceBuilder({ onSolved, onBeep }: Props) {
     if (nextPicked.length === SENTENCE_WORDS.length) {
       setSolved(true);
       onBeep("success");
-      window.setTimeout(onSolved, 1400);
     }
   };
 

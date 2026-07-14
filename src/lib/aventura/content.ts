@@ -112,12 +112,6 @@ export const LOVE_MATH_OPTIONS: { id: string; label: string; correct?: boolean; 
 
 // Phase 04 — Simon
 export const SIMON_SEQUENCE = [0, 2, 1, 3, 2] as const; // 4 colors, 5 steps
-export const SIMON_COLORS = [
-  { key: "pink", label: "❤", varName: "--neon-pink", freq: 523.25 },
-  { key: "cyan", label: "◆", varName: "--neon-cyan", freq: 659.25 },
-  { key: "purple", label: "★", varName: "--neon-pink", freq: 783.99, hue: "oklch(0.6 0.28 305)" },
-  { key: "green", label: "✦", varName: "--neon-cyan", freq: 987.77, hue: "oklch(0.85 0.22 145)" },
-] as const;
 
 // Phase 02 — Caesar
 export const CAESAR_PLAIN = "AMO MUITO VOCE";

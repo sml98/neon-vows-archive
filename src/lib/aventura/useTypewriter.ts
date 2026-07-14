@@ -5,6 +5,7 @@ export function useTypewriter(text: string, speed = 45): { output: string; done:
   const [done, setDone] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     setOutput("");
     setDone(false);
     let i = 0;
