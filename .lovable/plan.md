@@ -1,111 +1,101 @@
+# Plano: Fases mais desafiadoras e românticas
 
-# Refatoração "Aventura com Camila" — Neon Edition v2
+Vou reformular o conteúdo e a mecânica das fases (sem quebrar a arquitetura React/Tailwind já existente), transformando o fluxo linear de "clicar/responder uma palavra" em uma jornada com enigmas, reviravoltas narrativas e mini-puzzles. O romance continua sendo o coração — cada acerto revela uma frase carinhosa; cada erro devolve uma provocação fofa.
 
-Vamos migrar o HTML único para uma rota React dentro deste projeto Lovable (TanStack Start + Tailwind v4), com foco em **qualidade de código**, **efeitos neon caprichados** e **mobile/legibilidade**. Assets ficam como placeholders bonitos por enquanto.
+## Novo arco narrativo (10 fases)
 
-## O que muda pro usuário final
+Introduzo uma micro-história: o "sistema" está preso em loop desde que o Samuka conheceu a Camila, e cada fase é um fragmento de memória sendo restaurado. Isso conecta as fases em vez de serem quizzes soltos.
 
-- Mesma jornada de 10 fases, mesmo tom romântico/8-bit, mesmas mensagens.
-- Visual mais polido: scanlines CRT sutis, glitch nos títulos, transições suaves entre fases, som opcional de "beep" nos botões, animação de vitória na fase final.
-- Legível em telas 390px: escalas de fonte responsivas, contraste revisado, área de toque mínima 44px, sem scroll horizontal.
-- Enter envia formulários (senha, resposta do encontro).
-- Botão de mute/unmute visível para a música.
+### Fase 01 — Boot Sequence (login temporal) — *retrabalhada*
+- Continua a data, mas agora com **3 tentativas visíveis** ("HP do sistema").
+- A cada erro, aparece um fragmento diferente da dica (revelação progressiva), não uma dica única escondida.
+- Reviravolta: ao acertar, o "sistema" responde "senha aceita… mas eu já sabia que era você desde o primeiro pixel."
 
-## Estrutura de arquivos
+### Fase 02 — Sinal fraco (decodificador) — *novo puzzle substituindo a tela passiva*
+- Um "sinal criptografado" aparece em Cifra de César simples (deslocamento fixo, ex.: 3).
+- A Camila vê algo como `KDPR PXLWR YRFH` e um seletor de deslocamento (−5 a +5).
+- Ao acertar deslocamento, revela: `AMO MUITO VOCE`.
+- Feedback visual: letras se "recompõem" com efeito glitch.
 
-```
-src/routes/
-  aventura.tsx              → rota /aventura (a experiência)
-src/components/aventura/
-  AventuraShell.tsx         → caixa neon + fundo + scanlines + audio
-  CatSprites.tsx            → os 2 gatinhos 8-bit (SVG isolado)
-  PhaseTransition.tsx       → wrapper com animação glitch-fade
-  ProgressBar.tsx           → barra HP estilizada
-  NeonButton.tsx            → variantes cyan/magenta, tamanhos, active
-  CyberInput.tsx            → input + suporte a Enter
-  CyberTextBox.tsx          → caixa de "terminal"
-  phases/
-    Phase01Password.tsx
-    Phase02Chocolate.tsx
-    Phase03Pact.tsx
-    Phase04Hack.tsx
-    Phase05Quiz1.tsx
-    Phase06Quiz2.tsx
-    Phase07BodyParts.tsx
-    Phase08LoveMeter.tsx
-    Phase09Poem.tsx
-    Phase10Finale.tsx
-src/lib/aventura/
-  content.ts                → todos os textos, respostas e config (uma fonte só)
-  useAventuraState.ts       → hook do fluxo (fase atual, next, reset)
-  useTypewriter.ts          → hook do efeito de máquina de escrever
-  useBeep.ts                → WebAudio beep curto pra feedback
-```
+### Fase 03 — Pacto do chocolate — *com twist lógico*
+- Mantém a pergunta do chocolate, mas agora com **3 opções**:
+  1. "Sim, divido"
+  2. "Não divido"
+  3. "Depende do sabor"
+- Qualquer resposta avança (não tem resposta errada), mas cada uma dispara uma fala diferente do Samuka. A "certa emocional" é a 3 (easter egg com beep especial).
 
-- Zero `document.getElementById`, zero `innerHTML`, zero globals.
-- Textos e "respostas certas" centralizados em `content.ts` (fáceis de editar).
-- `src/routes/index.tsx` continua sendo a home; adiciono um link discreto pra `/aventura` (ou você abre direto pela URL — me diz depois).
+### Fase 04 — Sequência do coração (Simon Says romântico) — *substitui o clicker*
+- 4 botões coloridos neon (rosa/ciano/roxo/verde) piscam uma sequência curta (3 → 4 → 5 passos).
+- Camila repete a sequência. Errou = "meu coração bate diferente, tenta de novo".
+- Substitui o clicker repetitivo por um puzzle real de memória, mantendo o tema "sincronizar batimentos".
 
-## Design system (tokens no `src/styles.css`)
+### Fase 05 — Verificação de memória (quiz com pegadinha)
+- Pergunta: "Quem apaga primeiro no filme?" — mas com **4 opções** incluindo distratores fofos ("O gato", "Ninguém, terminamos o filme").
+- Só "Camila" avança; as outras devolvem respostas específicas e provocativas.
 
-Adiciono tokens neon ao `@theme` para não hardcodar cores nos componentes:
+### Fase 06 — Enigma do primeiro encontro (dedução em 3 pistas)
+- Em vez de digitar "shopping" direto, o sistema libera **3 pistas** uma por uma (botão "próxima pista"):
+  1. "Tinha vitrines acesas."
+  2. "O cheiro era de praça de alimentação."
+  3. "Tinha um cara ensaiando o que dizer há uma hora."
+- Depois das pistas, campo aberto pra responder. Aceita variações ("shopping", "shopping center", nome do shopping se você quiser fixar um).
 
-- `--neon-pink: oklch(0.70 0.32 330)` e `--neon-cyan: oklch(0.85 0.19 200)`
-- `--neon-bg: oklch(0.10 0.05 300)`
-- `--shadow-neon-pink`, `--shadow-neon-cyan` (glow)
-- `--gradient-scanline` para o overlay CRT
-- Fontes `Press Start 2P` e `VT323` carregadas via `<link>` no `__root.tsx` (nunca `@import` remoto — regra do Tailwind v4).
-- Utilitário `@utility neon-text-pink` / `neon-text-cyan` para o brilho de texto.
+### Fase 07 — Reconstrução (drag/tap para ordenar) — *novo mini-puzzle*
+- 5 fragmentos de uma frase embaralhados em cartões clicáveis.
+- Camila toca na ordem correta pra reconstruir: `"VOCÊ / É / MINHA / FASE / FAVORITA"`.
+- Sem drag-and-drop (evita complicação mobile) — apenas tap sequencial com feedback visual (cartão fica ciano quando entra na ordem).
+- Substitui o "escolha a parte do corpo" por algo mais interativo. A ideia das partes vira **recompensa opcional** no final (ver Fase 08).
 
-## Melhorias visuais concretas
+### Fase 08 — Análise de atração (mantida, mas enriquecida)
+- Mantém as 5 partes do corpo com as falas atuais.
+- Twist: agora após "ver a verdade", aparece um mini-quiz bônus opcional: "quer ver o que EU acho que você mais gosta em mim?" com 3 opções auto-depreciativas engraçadas do Samuka.
 
-- **Scanlines CRT** em `::before` fixo com `pointer-events:none`, opacidade suave, animação lenta de deslocamento vertical.
-- **Glitch nos títulos** (`h1/h2`) com `text-shadow` duplo e um `@keyframes` curto disparado ao entrar na fase.
-- **Vinheta escura** nos cantos para efeito CRT.
-- **Cursor piscante** consistente (componente `<Caret />`).
-- **Feedback tátil**: cada botão dispara um beep curto (WebAudio, sem asset) + micro-shake em erro.
-- **Barra de "hack"** ganha marcações (segmentos HP) e uma tremida quando enche.
-- **Fase final**: chuva de pixels ✦ / corações rosa/ciano em canvas leve (~50 partículas) + fade-in da foto placeholder.
-- **Placeholder da foto**: gradiente neon com moldura pixel-art + legenda "// insira nossa foto aqui //" — trocável depois.
+### Fase 09 — Medidor de amor (com armadilha matemática romântica)
+- Não é mais escolher %, é resolver: "Se eu te amo `X`, e você me ama `Y`, e `X = Y × ∞`, qual é `X`?"
+- 4 opções: `100%`, `∞`, `indefinido`, `Camila`.
+- Só "Camila" ou "∞" avançam. As outras devolvem provocações.
 
-## Mobile & acessibilidade
+### Fase 10 — Poema + Finale (mantidos, com polimento)
+- Poema Vinícius continua com typewriter.
+- Finale: além da foto e partículas, adiciono um **"achievement unlocked"** listando as fases superadas ("Boot Sequence ✔", "Decodificador ✔", …) — reforça a sensação de jornada.
 
-- Container: `w-full max-w-md` no desktop, `max-w-[92vw]` no mobile, `min-h-dvh` (não `100vh`).
-- Textos: `text-base` no mobile → `sm:text-lg` no desktop; títulos com `clamp()`.
-- Todos os botões: `min-h-11`, foco visível (`focus-visible:ring-3`), `aria-label` onde faltar.
-- SVGs decorativos com `aria-hidden`.
-- Áudio: começa mutado, botão flutuante 🔊/🔇 no canto; `play()` só após primeira interação (contorna bloqueio de autoplay).
-- Mensagens de erro com `role="alert"` e `aria-live="polite"`.
-- `<form onSubmit>` real nas fases de input, então Enter funciona.
-- Sem `overflow-x-hidden` global; o layout já não estoura.
+## Arquivos afetados
 
-## Qualidade de código
+**Novos componentes/puzzles:**
+- `src/components/aventura/puzzles/CaesarDecoder.tsx` — fase 02
+- `src/components/aventura/puzzles/SimonSequence.tsx` — fase 04
+- `src/components/aventura/puzzles/SentenceBuilder.tsx` — fase 07
+- `src/components/aventura/AchievementList.tsx` — fase 10
 
-- Estado do fluxo num único `useAventuraState()` com união discriminada de fases → impossível estar em duas fases ao mesmo tempo.
-- `content.ts` tipado:
-  ```ts
-  export const PASSWORD_ANSWERS = ["09/10/25", "09/10/2025"];
-  export const MEETING_ANSWERS = ["shopping"];
-  export const BODY_PART_MESSAGES: Record<BodyPart, string> = { ... };
-  ```
-- Comparações de resposta normalizadas (trim + lowercase + remove acento) num helper `normalize()`.
-- Typewriter como hook reutilizável, com cleanup no unmount (sem `i` global bugando ao voltar).
-- Todos os textos usam `{string}` em JSX (nada de `innerHTML`) → sem risco de XSS.
-- TypeScript estrito, sem `any`.
+**Fases reescritas:**
+- `Phase01Password.tsx` — tentativas + dica progressiva
+- `Phase02Chocolate.tsx` → renomear conceito p/ decodificador (mantém arquivo, troca conteúdo). A imagem `couple-smile.png` migra pra recompensa da Fase 07.
+- `Phase03Pact.tsx` — 3 opções
+- `Phase04Hack.tsx` → vira SimonSequence
+- `Phase05Quiz1.tsx` — 4 opções
+- `Phase06Quiz2.tsx` — pistas progressivas
+- `Phase07BodyParts.tsx` → vira SentenceBuilder (partes do corpo movem pra Fase 08)
+- `Phase08LoveMeter.tsx` → funde com "partes do corpo" ou vira o enigma matemático (decidir na build)
+- `Phase10Finale.tsx` — adiciona lista de achievements
 
-## SEO / metadata
+**Estado global:**
+- `useAventuraState.ts` — rastrear "achievements" concluídos e tentativas por fase.
 
-- `head()` da rota `/aventura` com título tipo "Aventura • Neon Edition", description curta, `robots: noindex` (é conteúdo pessoal), sem og:image.
-- Home (`/`) continua com o placeholder atual — não faz parte deste pedido.
+**Conteúdo:**
+- `src/lib/aventura/content.ts` — adicionar novas strings (mensagem decodificada, sequência da frase, distratores, achievements).
 
-## Fora de escopo (confirma comigo se quiser incluir)
+## Detalhes técnicos
 
-- Backend para esconder a senha e respostas (você não marcou "segurança").
-- Upload real da foto de vocês e do `musica.mp3` (você escolheu placeholders).
-- Trocar a home por essa aventura, ou proteger a rota.
+- Sem novas dependências. Tudo com React state + Tailwind + animações CSS já existentes.
+- Puzzles novos usam apenas `useState`/`useEffect` — nenhum drag/gesture lib.
+- Acessibilidade: Simon dispara beeps distintos por cor; sequência é anunciada via `aria-live`.
+- Mobile: cartões do SentenceBuilder em grid 2 colunas (fit em 320px); Simon com 4 botões grandes 2×2.
+- Efeitos neon existentes (`glitch-fade`, `neon-shake`, scanlines) são reaproveitados nos novos componentes.
 
-## Verificação antes de fechar
+## Fora de escopo (não vou mexer)
 
-- Build passa (typecheck estrito).
-- Playwright rodando em 390×844: percorro as 10 fases, tiro screenshot de cada uma, confirmo que nada estoura horizontalmente e que os botões têm tamanho de toque adequado.
-- Console limpo, sem warnings de hydration.
+- Layout global, shell, sistema de beeps, poema, fontes/tema.
+- Backend/persistência (fases continuam client-side).
+- Substituição de assets (as duas fotos continuam onde estão, só migro a `couple-smile` de fase).
+
+Confirma que posso partir pra build?
