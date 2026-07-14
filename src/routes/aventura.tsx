@@ -22,7 +22,7 @@ export const Route = createFileRoute("/aventura")({
       {
         name: "description",
         content:
-          "Uma jornada interativa em pixel-art neon: 10 fases, quizzes e mensagens escondidas.",
+          "Uma jornada interativa em pixel-art neon: 10 fases, enigmas e mensagens escondidas.",
       },
       { name: "robots", content: "noindex" },
     ],
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/aventura")({
 });
 
 function AventuraPage() {
-  const { phase, goTo } = useAventuraState();
+  const { phase, goTo, achievements, unlock } = useAventuraState();
   const { beep, setMuted } = useBeep();
   const [muted, setMutedState] = useState(false);
 
@@ -42,21 +42,24 @@ function AventuraPage() {
     if (!next) beep("click");
   };
 
-  const next = (n: PhaseId) => goTo(n);
+  const advance = (from: PhaseId, to: PhaseId) => {
+    unlock(from);
+    goTo(to);
+  };
 
   return (
     <AventuraShell muted={muted} onToggleMute={toggleMute}>
       <PhaseTransition keyId={phase}>
-        {phase === 1 && <Phase01Password onSolved={() => next(2)} onBeep={beep} />}
-        {phase === 2 && <Phase02Chocolate onNext={() => next(3)} onBeep={() => beep("click")} />}
-        {phase === 3 && <Phase03Pact onNext={() => next(4)} onBeep={beep} />}
-        {phase === 4 && <Phase04Hack onNext={() => next(5)} onBeep={beep} />}
-        {phase === 5 && <Phase05Quiz1 onNext={() => next(6)} onBeep={beep} />}
-        {phase === 6 && <Phase06Quiz2 onNext={() => next(7)} onBeep={beep} />}
-        {phase === 7 && <Phase07BodyParts onNext={() => next(8)} onBeep={beep} />}
-        {phase === 8 && <Phase08LoveMeter onNext={() => next(9)} onBeep={beep} />}
-        {phase === 9 && <Phase09Poem onNext={() => next(10)} onBeep={() => beep("success")} />}
-        {phase === 10 && <Phase10Finale />}
+        {phase === 1 && <Phase01Password onSolved={() => advance(1, 2)} onBeep={beep} />}
+        {phase === 2 && <Phase02Chocolate onNext={() => advance(2, 3)} onBeep={beep} />}
+        {phase === 3 && <Phase03Pact onNext={() => advance(3, 4)} onBeep={beep} />}
+        {phase === 4 && <Phase04Hack onNext={() => advance(4, 5)} onBeep={beep} />}
+        {phase === 5 && <Phase05Quiz1 onNext={() => advance(5, 6)} onBeep={beep} />}
+        {phase === 6 && <Phase06Quiz2 onNext={() => advance(6, 7)} onBeep={beep} />}
+        {phase === 7 && <Phase07BodyParts onNext={() => advance(7, 8)} onBeep={beep} />}
+        {phase === 8 && <Phase08LoveMeter onNext={() => advance(8, 9)} onBeep={beep} />}
+        {phase === 9 && <Phase09Poem onNext={() => advance(9, 10)} onBeep={beep} />}
+        {phase === 10 && <Phase10Finale achievements={achievements} />}
       </PhaseTransition>
     </AventuraShell>
   );

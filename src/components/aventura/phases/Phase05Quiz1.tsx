@@ -1,9 +1,26 @@
 import { useState } from "react";
 import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
+import { QUIZ1_OPTIONS } from "@/lib/aventura/content";
 
-export function Phase05Quiz1({ onNext, onBeep }: { onNext: () => void; onBeep: (k: "success" | "error") => void }) {
+interface Props {
+  onNext: () => void;
+  onBeep: (k: "success" | "error" | "click") => void;
+}
+
+export function Phase05Quiz1({ onNext, onBeep }: Props) {
   const [error, setError] = useState<string | null>(null);
+
+  const pick = (opt: (typeof QUIZ1_OPTIONS)[number]) => {
+    if (opt.correct) {
+      onBeep("success");
+      setError(null);
+      window.setTimeout(onNext, 300);
+    } else {
+      onBeep("error");
+      setError(opt.msg ?? null);
+    }
+  };
 
   return (
     <div className="w-full flex flex-col items-center gap-4">
@@ -12,34 +29,21 @@ export function Phase05Quiz1({ onNext, onBeep }: { onNext: () => void; onBeep: (
       </h2>
       <CyberTextBox accent="cyan">
         <p>
-          &gt; Pra confirmar que você é mesmo a minha dupla oficial, responde aí:
+          &gt; pra confirmar que você é minha dupla oficial:
           <br />
           <br />
-          &gt; Quem apaga primeiro no meio de um filme, mesmo tendo escolhido o filme?
+          &gt; quem apaga primeiro no meio de um filme, mesmo tendo escolhido o filme?
         </p>
       </CyberTextBox>
 
-
-      <div className="flex flex-col gap-3 w-full">
-        <NeonButton
-          variant="pink"
-          onClick={() => {
-            onBeep("error");
-            setError("> aaaah, não minta pra mim mulher kkkk quem sempre apaga é você e você sabe disso ❤");
-          }}
-        >
-          &gt; SAMUKA
-        </NeonButton>
-        <NeonButton
-          variant="pink"
-          onClick={() => {
-            onBeep("success");
-            onNext();
-          }}
-        >
-          &gt; CAMILA
-        </NeonButton>
+      <div className="grid grid-cols-1 gap-3 w-full">
+        {QUIZ1_OPTIONS.map((opt) => (
+          <NeonButton key={opt.id} variant="pink" onClick={() => pick(opt)}>
+            &gt; {opt.label}
+          </NeonButton>
+        ))}
       </div>
+
       {error && (
         <p role="alert" aria-live="polite" className="text-[var(--neon-pink)] font-terminal text-lg">
           {error}
