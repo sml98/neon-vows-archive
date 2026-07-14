@@ -129,7 +129,7 @@ export function SimonSequence({ onSolved, onBeep }: Props) {
         </p>
       )}
 
-      {(phase === "idle" || phase === "showing") && phase !== "won" && (
+      {(phase === "idle" || phase === "showing") && (
         <NeonButton variant="cyan" onClick={play} disabled={phase === "showing"}>
           {phase === "showing" ? "[ TRANSMITINDO... ]" : "[ INICIAR SEQUÊNCIA ]"}
         </NeonButton>
