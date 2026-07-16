@@ -3,15 +3,15 @@ export const PASSWORD_ANSWERS = ["09/10/25", "09/10/2025"];
 export const PASSWORD_HINT_FRAGMENTS = [
   "> pista 1/3: foi o dia em que apertei START na melhor coop da minha vida.",
   "> pista 2/3: outubro estava começando, e eu, terminando de me apaixonar.",
-  "> pista 3/3: DD/MM/AA — o dia, o mês e o ano em que tudo mudou (2025). 😉",
+  "> pista 3/3: o formato é dia/mês/ano... o dia em que tudo mudou. 😉",
 ];
 
-export const MEETING_ANSWERS = ["shopping", "shopping center", "shoping"];
+export const MEETING_ANSWERS = ["shopping", "shopping center", "praça de alimentação", "praca de alimentacao", "alimentacao"];
 
 export const MEETING_CLUES = [
-  "> pista 1/3: as vitrines estavam acesas, refletindo em você.",
-  "> pista 2/3: o cheiro da praça de alimentação estava por toda parte.",
-  "> pista 3/3: tinha um cara ensaiando frases há uma hora, sem coragem de chegar. (era eu.)",
+  "> pista 1/3: estávamos rodeados de opções de comida na praça de alimentação do shopping.",
+  "> pista 2/3: você estava tomando um café bem tranquila...",
+  "> pista 3/3: ...e eu queria tomar um chopp de vinho! Você achou estranho na hora, mas depois acabou bebendo junto comigo. 😉",
 ];
 
 export type BodyPart = "cabelo" | "olhos" | "estilo" | "curvas" | "boca";
@@ -31,7 +31,7 @@ export const BODY_PART_MESSAGES: Record<BodyPart, string> = {
 export const BODY_PART_TRUTH =
   "> Mas a verdade real? Eu amo VOCÊ INTEIRA, Camila. Não existe parte favorita quando o pacote todo é obra-prima. Você é minha edição limitada, sem bugs, sem patch, sem substituto.";
 
-export const SAMUKA_SELF_OPTIONS: { id: string; label: string; msg: string }[] = [
+export const SAMUEL_SELF_OPTIONS: { id: string; label: string; msg: string }[] = [
   {
     id: "risada",
     label: "MINHA RISADA",
@@ -52,17 +52,17 @@ export const SAMUKA_SELF_OPTIONS: { id: string; label: string; msg: string }[] =
 // Phase 03 — Pacto do chocolate (3 opções, todas avançam)
 export const PACT_RESPONSES: Record<"sim" | "nao" | "depende", string> = {
   sim: "> pacto selado com açúcar e amor. o sistema registra: dupla oficial confirmada. ❤",
-  nao: "> negado?! ai, mulher... tudo bem. o sistema me lembra: te amar não depende de chocolate compartilhado (mas ajudaria kkk).",
+  nao: "> negado?! ai, meu amor... tudo bem. o sistema me lembra: te amar não depende de chocolate compartilhado (mas ajudaria kkk).",
   depende:
-    "> RESPOSTA PERFEITA. a Camila que eu conheço sempre negocia. essa é a mulher que roubou meu HP. ❤ (easter egg desbloqueado)",
+    "> RESPOSTA PERFEITA. a Camila que eu conheço sempre negocia. esse é o meu amor que roubou meu HP. ❤ (easter egg desbloqueado)",
 };
 
 // Phase 05 — 4 opções
 export const QUIZ1_OPTIONS: { id: string; label: string; correct?: boolean; msg?: string }[] = [
   {
-    id: "samuka",
-    label: "SAMUKA",
-    msg: "> aaaah, não minta pra mim, moça! quem apaga primeiro é você — e você sabe. ❤",
+    id: "samuel",
+    label: "SAMUEL",
+    msg: "> aaaah, não minta pra mim, Bombom! quem apaga primeiro é você — e você sabe. ❤",
   },
   { id: "camila", label: "CAMILA", correct: true },
   {
@@ -100,7 +100,7 @@ export const LOVE_MATH_OPTIONS: { id: string; label: string; correct?: boolean; 
   {
     id: "indefinido",
     label: "INDEFINIDO",
-    msg: "> nada indefinido aqui, moça. o único indefinido é quantos beijos ainda te devo.",
+    msg: "> nada indefinido aqui, minha vida. o único indefinido é quantos beijos ainda te devo.",
   },
   {
     id: "camila",
@@ -111,7 +111,7 @@ export const LOVE_MATH_OPTIONS: { id: string; label: string; correct?: boolean; 
 ];
 
 // Phase 04 — Simon
-export const SIMON_SEQUENCE = [0, 2, 1, 3, 2] as const; // 4 colors, 5 steps
+export const SIMON_SEQUENCE = [0, 2, 1, 3, 2, 0, 3, 1] as const; // 4 colors, 8 steps
 
 // Phase 02 — Caesar
 export const CAESAR_PLAIN = "AMO MUITO VOCE";
@@ -127,10 +127,16 @@ export const ACHIEVEMENTS: Record<number, string> = {
   1: "BOOT SEQUENCE",
   2: "SINAL DECODIFICADO",
   3: "PACTO SELADO",
-  4: "BATIMENTOS SINCRONIZADOS",
-  5: "MEMÓRIA VERIFICADA",
-  6: "PRIMEIRO ENCONTRO REVIVIDO",
-  7: "MENSAGEM RECONSTRUÍDA",
-  8: "ANÁLISE COMPLETA",
-  9: "EQUAÇÃO RESOLVIDA",
+  4: "CARTA RECEBIDA",
+  5: "MEMÓRIA AFETIVA RESTAURADA",
+  6: "BATIMENTOS SINCRONIZADOS",
+  7: "MEMÓRIA VERIFICADA",
+  8: "PRIMEIRO ENCONTRO REVIVIDO",
+  9: "MENSAGEM RECONSTRUÍDA",
+  10: "CONSTELAÇÃO DESENHADA",
+  11: "SINTONIA PESSOAL CONFIRMADA",
+  12: "ANÁLISE COMPLETA",
+  13: "COFRE ABERTO",
+  14: "LINHA DO TEMPO RECONSTRUÍDA",
+  15: "EQUAÇÃO RESOLVIDA",
 };

@@ -21,13 +21,25 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
 
   const cluesShown = errors; // 0..3
 
+  const handleKeypadPress = (char: string) => {
+    if (message) return;
+    onBeep("click");
+    if (char === "DEL") {
+      setValue((prev) => prev.slice(0, -1));
+    } else {
+      if (value.length < 10) {
+        setValue((prev) => prev + char);
+      }
+    }
+  };
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     const ok = PASSWORD_ANSWERS.some((a) => normalize(a) === normalize(value));
     if (ok) {
       onBeep("success");
       setMessage("> senha aceita... mas eu já sabia que era você desde o primeiro pixel. ❤");
-      window.setTimeout(onSolved, 1200);
+      window.setTimeout(onSolved, 3000);
     } else {
       const nextErrors = Math.min(MAX_HP, errors + 1);
       setErrors(nextErrors);
@@ -46,9 +58,15 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
 
       <CyberTextBox accent="cyan">
         <p>
-          &gt; acesso restrito: apenas Camila.
+          &gt; SISTEMA CARREGANDO...
           <br />
-          &gt; insira o código temporal (DD/MM/AA) pra desbloquear a próxima fase.
+          &gt; detectando presença... Bombom identificada.
+          <br />
+          &gt; aviso: este terminal contém uma mensagem classificada.
+          <br />
+          &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.
+          <br />
+          &gt; para acessar, insira o código secreto. só quem viveu comigo sabe.
         </p>
       </CyberTextBox>
 
@@ -67,18 +85,37 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
 
       <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
         <CyberInput
-          aria-label="Código temporal (DD/MM/AA)"
-          placeholder="DD/MM/AA"
+          aria-label="Código secreto"
+          placeholder="_ _ / _ _ / _ _"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           autoComplete="off"
           inputMode="numeric"
+          className="text-center font-display tracking-widest text-lg"
+          readOnly
         />
       </div>
 
+      {/* Retro Hacking Keypad */}
+      {!message && (
+        <div className="grid grid-cols-3 gap-2 w-full max-w-[260px] my-2">
+          {["1", "2", "3", "4", "5", "6", "7", "8", "9", "/", "0", "DEL"].map((k) => (
+            <button
+              key={k}
+              type="button"
+              onClick={() => handleKeypadPress(k)}
+              className="border-2 border-[var(--neon-cyan)] text-[var(--neon-cyan)] bg-black/60 font-display text-xs p-3 hover:bg-[var(--neon-cyan)]/20 active:scale-95 transition-all"
+              style={{ boxShadow: "0 0 6px oklch(0.86 0.19 200 / 0.3)" }}
+            >
+              {k === "DEL" ? "⌫" : k}
+            </button>
+          ))}
+        </div>
+      )}
+
       {cluesShown > 0 && (
         <CyberTextBox accent="pink">
-          <div className="space-y-1 italic">
+          <div className="space-y-1 italic text-xs">
             {PASSWORD_HINT_FRAGMENTS.slice(0, cluesShown).map((frag, i) => (
               <p key={i} className="text-[var(--neon-pink)]">{frag}</p>
             ))}
@@ -91,7 +128,7 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
           {message}
         </p>
       ) : (
-        <NeonButton type="submit" variant="cyan" onClick={() => onBeep("click")}>
+        <NeonButton type="submit" variant="cyan">
           [ UNLOCK TERMINAL ]
         </NeonButton>
       )}

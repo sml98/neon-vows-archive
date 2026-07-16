@@ -46,5 +46,21 @@ export function useBeep() {
     osc.stop(ctx.currentTime + duration + 0.02);
   }, []);
 
-  return { beep, setMuted };
+  const playFreq = useCallback((freq: number, duration = 0.12, type: OscillatorType = "sine") => {
+    if (mutedRef.current) return;
+    const ctx = ensureCtx();
+    if (!ctx) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.12, ctx.currentTime + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + duration + 0.02);
+  }, []);
+
+  return { beep, setMuted, playFreq };
 }

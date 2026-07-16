@@ -171,7 +171,7 @@ function ImageSlideshow() {
   };
 
   return (
-    <div className="relative w-full border-2 border-[var(--neon-cyan)] shadow-[var(--shadow-neon-cyan)] overflow-hidden animate-glitch-fade flex flex-col">
+    <div className="relative w-full border-2 border-[var(--neon-cyan)] shadow-[var(--shadow-neon-cyan)] overflow-hidden animate-glitch-fade flex flex-col z-10">
       <div className="relative aspect-video w-full overflow-hidden bg-black">
         <img
           src={IMAGES[idx].url}
@@ -201,18 +201,65 @@ function ImageSlideshow() {
         <button
           type="button"
           onClick={prev}
-          className="px-2 py-1 border border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:bg-[var(--neon-cyan)]/20 active:scale-95 cursor-pointer"
+          className="px-2 py-1 border border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:bg-[var(--neon-cyan)]/20 active:scale-95 cursor-pointer font-display"
         >
           &lt;
         </button>
-        <span className="truncate max-w-[180px]">{IMAGES[idx].label}</span>
+        <span className="truncate max-w-[180px] font-display">{IMAGES[idx].label}</span>
         <button
           type="button"
           onClick={next}
-          className="px-2 py-1 border border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:bg-[var(--neon-cyan)]/20 active:scale-95 cursor-pointer"
+          className="px-2 py-1 border border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:bg-[var(--neon-cyan)]/20 active:scale-95 cursor-pointer font-display"
         >
           &gt;
         </button>
+      </div>
+    </div>
+  );
+}
+
+function LoveCountdown() {
+  const [elapsed, setElapsed] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    const startDate = new Date(2025, 9, 9); // Oct 9, 2025 (months are 0-indexed, so 9 is October)
+    const tick = () => {
+      const now = new Date();
+      const diff = now.getTime() - startDate.getTime();
+      const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+      const hours = Math.max(0, Math.floor((diff / (1000 * 60 * 60)) % 24));
+      const minutes = Math.max(0, Math.floor((diff / (1000 * 60)) % 60));
+      const seconds = Math.max(0, Math.floor((diff / 1000) % 60));
+      setElapsed({ days, hours, minutes, seconds });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="w-full border-2 border-[var(--neon-cyan)] bg-black/90 p-4 text-center font-display shadow-[var(--shadow-neon-cyan)] z-10 animate-glitch-fade">
+      <div className="text-[9px] text-[var(--neon-cyan)] tracking-widest mb-2 font-display">TEMPO DE COOP COMPARTILHADO:</div>
+      <div className="flex justify-center gap-3 text-[var(--neon-pink)]">
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{elapsed.days}</span>
+          <span className="text-[8px] text-[var(--neon-cyan)] font-display">DIAS</span>
+        </div>
+        <span className="text-2xl neon-text-cyan self-start font-display">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.hours).padStart(2, '0')}</span>
+          <span className="text-[8px] text-[var(--neon-cyan)] font-display">HORAS</span>
+        </div>
+        <span className="text-2xl neon-text-cyan self-start font-display">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.minutes).padStart(2, '0')}</span>
+          <span className="text-[8px] text-[var(--neon-cyan)] font-display">MIN</span>
+        </div>
+        <span className="text-2xl neon-text-cyan self-start font-display">:</span>
+        <div className="flex flex-col items-center">
+          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.seconds).padStart(2, '0')}</span>
+          <span className="text-[8px] text-[var(--neon-cyan)] font-display">SEG</span>
+        </div>
       </div>
     </div>
   );
@@ -224,20 +271,20 @@ function ArcadeTicket() {
   };
 
   return (
-    <div className="w-full max-w-sm mt-6 border-4 border-dashed border-[var(--neon-pink)] bg-black p-5 text-center font-display text-white shadow-[var(--shadow-neon-pink)] animate-glitch-fade select-none relative overflow-hidden printable-ticket">
+    <div className="w-full max-w-sm mt-6 border-4 border-dashed border-[var(--neon-pink)] bg-black p-5 text-center font-display text-white shadow-[var(--shadow-neon-pink)] animate-glitch-fade select-none relative overflow-hidden printable-ticket z-10">
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-6 h-6 rounded-full bg-[oklch(0.12_0.06_300)] border-r-4 border-dashed border-[var(--neon-pink)] -ml-3" />
       <div className="absolute top-1/2 right-0 -translate-y-1/2 w-6 h-6 rounded-full bg-[oklch(0.12_0.06_300)] border-l-4 border-dashed border-[var(--neon-pink)] -mr-3" />
 
-      <h3 className="text-xs neon-text-pink tracking-widest font-bold mb-3 uppercase">
+      <h3 className="text-xs neon-text-pink tracking-widest font-bold mb-3 uppercase font-display">
         ★ TICKET DE CONQUISTA ★
       </h3>
-      <div className="border-t border-b border-[var(--neon-cyan)] py-2 my-3 text-[10px] sm:text-xs text-[var(--neon-cyan)] flex justify-between px-2">
+      <div className="border-t border-b border-[var(--neon-cyan)] py-2 my-3 text-[10px] sm:text-xs text-[var(--neon-cyan)] flex justify-between px-2 font-display">
         <span>TICKET NO: 091025</span>
         <span>LEVEL: 99 (MAX)</span>
       </div>
 
       <div className="flex flex-col gap-2 text-left text-[9px] tracking-wide my-4 font-mono">
-        <div><span className="text-[var(--neon-pink)]">PLAYER 1:</span> SAMUEL (SAMUKA)</div>
+        <div><span className="text-[var(--neon-pink)]">PLAYER 1:</span> SAMUEL</div>
         <div><span className="text-[var(--neon-pink)]">PLAYER 2:</span> CAMILA</div>
         <div><span className="text-[var(--neon-pink)]">JORNADA:</span> CO-OP VITALÍCIA</div>
         <div><span className="text-[var(--neon-pink)]">STATUS:</span> AMOR INFINITO HABILITADO</div>
@@ -251,7 +298,7 @@ function ArcadeTicket() {
           ))}
         </div>
         <div className="text-[8px] text-[var(--neon-cyan)] mt-1 font-mono">
-          * CAMILA-E-SAMUKA-PARA-SEMPRE *
+          * CAMILA-E-SAMUEL-PARA-SEMPRE *
         </div>
       </div>
 
@@ -270,7 +317,7 @@ interface Props {
   achievements: number[];
 }
 
-export function Phase10Finale({ achievements }: Props) {
+export function Phase15Finale({ achievements }: Props) {
   const [revealed, setRevealed] = useState(false);
   const { output, done } = useTypewriter(POEM, 42);
 
@@ -278,14 +325,14 @@ export function Phase10Finale({ achievements }: Props) {
     <div className="w-full flex flex-col items-center gap-4">
       {revealed && <HeartFireworks />}
 
-      <h2 className="font-display text-xs sm:text-sm neon-text-pink leading-relaxed">
-        MAIN FRAME UNLOCKED
+      <h2 className="font-display text-xs sm:text-sm neon-text-pink leading-relaxed text-center">
+        MAINFRAME DESBLOQUEADO
       </h2>
 
-      <CyberTextBox accent="cyan" className="min-h-[200px] z-10">
-        <p className="whitespace-pre-line text-[var(--neon-cyan)] leading-relaxed">
+      <CyberTextBox accent="cyan" className="min-h-[200px] z-10 text-left">
+        <p className="whitespace-pre-line text-[var(--neon-cyan)] leading-relaxed text-xs sm:text-sm font-terminal">
           {output}
-          <Caret color="cyan" />
+          {!done && <Caret color="cyan" />}
         </p>
       </CyberTextBox>
 
@@ -297,10 +344,11 @@ export function Phase10Finale({ achievements }: Props) {
 
       {revealed && (
         <div className="w-full flex flex-col items-center gap-4 z-10">
+          <LoveCountdown />
           <ImageSlideshow />
 
           <CyberTextBox accent="pink">
-            <p className="text-[var(--neon-pink)]">
+            <p className="text-[var(--neon-pink)] text-xs sm:text-sm leading-relaxed font-terminal">
               &gt; nenhuma engine renderiza algo tão perfeito quanto você ao meu lado.
               <br />
               <br />

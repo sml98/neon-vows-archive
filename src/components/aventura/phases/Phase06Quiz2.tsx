@@ -15,6 +15,7 @@ export function Phase06Quiz2({ onNext, onBeep }: Props) {
   const [cluesShown, setCluesShown] = useState(1);
   const [error, setError] = useState(false);
   const [shake, setShake] = useState(false);
+  const [memoryMsg, setMemoryMsg] = useState(false);
 
   const revealNext = () => {
     if (cluesShown >= MEETING_CLUES.length) return;
@@ -27,7 +28,7 @@ export function Phase06Quiz2({ onNext, onBeep }: Props) {
     const ok = MEETING_ANSWERS.some((a) => normalize(value).includes(normalize(a)));
     if (ok) {
       onBeep("success");
-      onNext();
+      setMemoryMsg(true);
     } else {
       setError(true);
       setShake(true);
@@ -45,42 +46,62 @@ export function Phase06Quiz2({ onNext, onBeep }: Props) {
         <p>&gt; decifre o cenário do nosso primeiro encontro. use as pistas se precisar.</p>
       </CyberTextBox>
 
-      <CyberTextBox accent="pink">
-        <div className="space-y-1">
-          {MEETING_CLUES.slice(0, cluesShown).map((c, i) => (
-            <p key={i} className="text-[var(--neon-pink)]">{c}</p>
-          ))}
-        </div>
-      </CyberTextBox>
-
-      {cluesShown < MEETING_CLUES.length && (
-        <button
-          type="button"
-          onClick={revealNext}
-          className="text-sm text-[var(--neon-cyan)] underline underline-offset-4 min-h-9"
-        >
-          [ próxima pista ({cluesShown}/{MEETING_CLUES.length}) ]
-        </button>
+      {!memoryMsg && (
+        <CyberTextBox accent="pink">
+          <div className="space-y-1">
+            {MEETING_CLUES.slice(0, cluesShown).map((c, i) => (
+              <p key={i} className="text-[var(--neon-pink)]">{c}</p>
+            ))}
+          </div>
+        </CyberTextBox>
       )}
 
-      <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
-        <CyberInput
-          aria-label="Local do primeiro encontro"
-          placeholder="uma palavra basta..."
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          autoComplete="off"
-        />
-      </div>
+      {!memoryMsg ? (
+        <>
+          {cluesShown < MEETING_CLUES.length && (
+            <button
+              type="button"
+              onClick={revealNext}
+              className="text-sm text-[var(--neon-cyan)] underline underline-offset-4 min-h-9"
+            >
+              [ próxima pista ({cluesShown}/{MEETING_CLUES.length}) ]
+            </button>
+          )}
 
-      <NeonButton type="submit" variant="cyan">
-        [ ENVIAR RESPOSTA ]
-      </NeonButton>
+          <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
+            <CyberInput
+              aria-label="Local do primeiro encontro"
+              placeholder="uma palavra basta..."
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+              autoComplete="off"
+            />
+          </div>
 
-      {error && (
-        <p role="alert" aria-live="polite" className="text-[var(--neon-pink)] font-terminal text-lg">
-          &gt; hmmm... não foi ali. tenta uma nova pista?
-        </p>
+          <NeonButton type="submit" variant="cyan">
+            [ ENVIAR RESPOSTA ]
+          </NeonButton>
+
+          {error && (
+            <p role="alert" aria-live="polite" className="text-[var(--neon-pink)] font-terminal text-lg">
+              &gt; hmmm... não foi ali. tenta uma nova pista?
+            </p>
+          )}
+        </>
+      ) : (
+        <div className="w-full flex flex-col gap-3 animate-glitch-fade">
+          <CyberTextBox accent="pink">
+            <div className="space-y-2 text-[var(--neon-pink)] leading-relaxed text-sm text-left">
+              <p>&gt; MEMÓRIA DESBLOQUEADA: praça de alimentação, outubro de 2025.</p>
+              <p>&gt; eu ali, pedindo meu chopp de vinho esquisito. você com seu café, me achando louco.</p>
+              <p>&gt; mas no final... tomamos juntos. e desde aquele dia, eu nunca mais quis tomar nada sozinho.</p>
+              <p>&gt; obrigado por aceitar a minha maluquice, Bombom. ❤</p>
+            </div>
+          </CyberTextBox>
+          <NeonButton variant="cyan" onClick={() => { onBeep("click"); onNext(); }}>
+            [ GUARDAR MEMÓRIA ]
+          </NeonButton>
+        </div>
       )}
     </form>
   );

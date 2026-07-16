@@ -243,7 +243,7 @@
 }
 
 @utility animate-glitch-fade {
-  animation: glitch-fade 0.45s ease-out both;
+  animation: glitch-fade 0.8s ease-out both;
 }
 
 @utility animate-neon-blink {
@@ -256,4 +256,67 @@
 
 @utility animate-title-glitch {
   animation: title-glitch 4s infinite;
+}
+
+@utility synthwave-grid {
+  position: absolute;
+  width: 200vw;
+  height: 100vh;
+  bottom: 0;
+  left: -50vw;
+  background-image: 
+    linear-gradient(to right, oklch(0.86 0.19 200 / 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.72 0.32 330 / 0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(250px) rotateX(65deg);
+  transform-origin: bottom center;
+  animation: grid-scroll 18s linear infinite;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 20%, transparent 80%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 20%, transparent 80%);
+  pointer-events: none;
+  opacity: 0.75;
+  z-index: 1;
+}
+
+@keyframes grid-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 60px;
+  }
+}
+
+/* Shooting stars */
+@keyframes shooting-star {
+  0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 0; }
+  5% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateX(300px) translateY(300px) rotate(-45deg); opacity: 0; }
+}
+
+.shooting-stars::before,
+.shooting-stars::after {
+  content: '';
+  position: fixed;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, oklch(0.86 0.19 200), transparent);
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.shooting-stars::before {
+  top: 5%;
+  left: 20%;
+  animation: shooting-star 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.shooting-stars::after {
+  top: 15%;
+  left: 65%;
+  animation: shooting-star 5s ease-in-out infinite;
+  animation-delay: 3.5s;
 }
