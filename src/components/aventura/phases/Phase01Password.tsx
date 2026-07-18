@@ -66,7 +66,7 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
           <br />
           &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.
           <br />
-          &gt; para acessar, insira o código secreto. só quem viveu comigo sabe.
+          &gt; para acessar, insira o código secreto. Já que me amas, saberás tranquilamente a resposta!
         </p>
       </CyberTextBox>
 
@@ -86,7 +86,7 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
       <div className={shake ? "w-full animate-neon-shake" : "w-full"}>
         <CyberInput
           aria-label="Código secreto"
-          placeholder="_ _ / _ _ / _ _"
+          placeholder="_ _ _ _ _ _"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           autoComplete="off"

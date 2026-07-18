@@ -8,7 +8,7 @@ interface Props {
   onBeep: (k: "click" | "success") => void;
 }
 
-const LETTER_TEXT = `Bombom, se você chegou até aqui, é porque você é teimosa que nem eu. E é por isso que te amo.
+const LETTER_TEXT = `Meu bem, se você chegou até aqui, é porque você é teimosa que nem eu. E é por isso que te amo.
 
 Lembra do nosso primeiro encontro? Eu ali, querendo tomar um chopp de vinho no shopping, e você me olhando com aquela cara de 'esse cara é maluco'. Mas no final, você bebeu junto. E é assim que a gente funciona: eu sou o maluco, e você é a pessoa que torna a maluquice bonita.
 

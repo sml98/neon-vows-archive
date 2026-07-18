@@ -18,7 +18,7 @@ const EVENTS: TimelineEvent[] = [
   { id: 2, text: "Chopp de vinho esquisito aceito", order: 2 },
   { id: 3, text: "Primeiro beijo", order: 3 },
   { id: 4, text: "Primeiro 'te amo'", order: 4 },
-  { id: 5, text: "Hoje: aventura neon desbloqueada", order: 5 },
+  { id: 5, text: "Declaração codificada desbloqueada", order: 5 },
 ];
 
 // Helper to shuffle array

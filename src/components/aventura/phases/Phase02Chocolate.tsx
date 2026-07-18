@@ -1,4 +1,4 @@
-import { CaesarDecoder } from "../puzzles/CaesarDecoder";
+import { EnigmaDecoder } from "../puzzles/EnigmaDecoder";
 
 interface Props {
   onNext: () => void;
@@ -6,5 +6,5 @@ interface Props {
 }
 
 export function Phase02Chocolate({ onNext, onBeep }: Props) {
-  return <CaesarDecoder onSolved={onNext} onBeep={onBeep} />;
+  return <EnigmaDecoder onSolved={onNext} onBeep={onBeep} />;
 }

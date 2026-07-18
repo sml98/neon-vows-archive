@@ -28,7 +28,7 @@ const QUESTIONS: Question[] = [
     text: "Qual é o nosso principal objetivo na campanha desse co-op da vida? 🎮",
     options: [
       { label: "Ficar jogando o dia todo", correct: false, response: "> Seria bom, mas tem algo muito maior na nossa mira..." },
-      { label: "Construir o nosso cantinho e a nossa casinha 🏡", correct: true, response: "> Com certeza, meu amor! Mal posso esperar para carregar essa fase ao seu lado." },
+      { label: "Construir um melhorado e mais lindo futuro juntos, independente das situações, pois ao seu lado tenho a força necessária para lutar por isto!", correct: true, response: "> Com certeza, meu amor! Mal posso esperar para carregar essa fase ao seu lado." },
       { label: "Viajar até cansar", correct: false, response: "> Legal, mas construir nosso lar é o nosso principal savepoint. Tenta de novo." }
     ]
   },

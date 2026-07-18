@@ -16,13 +16,13 @@ interface CardData {
 }
 
 const PAIRS: { emoji: string; label: string; matchMsg: string }[] = [
-  { emoji: "🍫", label: "Chocolate", matchMsg: "> doçura compartilhada, igual o nosso amor." },
+  { emoji: "🍫", label: "Chocolate", matchMsg: "> Doce e irresistível, assim como tu! (mas tem que ser chocolate preto, pois sei que odeia o branco kkk)" },
   { emoji: "🌹", label: "Flor", matchMsg: "> cada pétala é uma promessa que te fiz." },
   { emoji: "☕", label: "Café", matchMsg: "> aquele primeiro café na praça de alimentação..." },
   { emoji: "🍷", label: "Chopp de Vinho", matchMsg: "> você achou estranho... mas depois tomou junto. ❤" },
   { emoji: "💜", label: "Coração", matchMsg: "> nosso coração em coop mode." },
   { emoji: "🎮", label: "Controle", matchMsg: "> player 1 + player 2 = invencíveis." },
-  { emoji: "🍕", label: "Pizza", matchMsg: "> nossa comida de domingo favorita." },
+  { emoji: "🍝", label: "Macarrão", matchMsg: "> independente do prato, é sempre um momento especial partilhar do momento de lanche com ela, independente do dia." },
   { emoji: "🍿", label: "Pipoca", matchMsg: "> acompanhante oficial das nossas maratonas." },
 ];
 

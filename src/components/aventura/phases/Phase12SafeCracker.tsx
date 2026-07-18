@@ -333,8 +333,7 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
           <CyberTextBox accent="pink">
             <p className="text-[var(--neon-pink)] leading-relaxed">
               &gt; cofre aberto! dentro havia o que eu mais protejo no mundo: o
-              meu amor por você, Bombom. guardado a sete chaves, mas sempre
-              seu. ❤
+              meu coração e agora ele está aos seus cuidados. guarde a sete chaves e mantenha com você para sempre! ❤
             </p>
           </CyberTextBox>
           <NeonButton

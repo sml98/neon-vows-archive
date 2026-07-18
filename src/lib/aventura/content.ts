@@ -1,16 +1,15 @@
 export const PASSWORD_ANSWERS = ["09/10/25", "09/10/2025"];
 
 export const PASSWORD_HINT_FRAGMENTS = [
-  "> pista 1/3: foi o dia em que apertei START na melhor coop da minha vida.",
-  "> pista 2/3: outubro estava começando, e eu, terminando de me apaixonar.",
-  "> pista 3/3: o formato é dia/mês/ano... o dia em que tudo mudou. 😉",
+  "> pista 1/2: foi o dia em que apertei START na melhor coop da minha vida.",
+  "> pista 2/2: outubro estava começando, e eu, terminando de me apaixonar.",
 ];
 
 export const MEETING_ANSWERS = ["shopping", "shopping center", "praça de alimentação", "praca de alimentacao", "alimentacao"];
 
 export const MEETING_CLUES = [
   "> pista 1/3: estávamos rodeados de opções de comida na praça de alimentação do shopping.",
-  "> pista 2/3: você estava tomando um café bem tranquila...",
+  "> pista 2/3: tu chegou tomando seu cafézinho, nesse momento eu já havia me admirado com sua bela presença!",
   "> pista 3/3: ...e eu queria tomar um chopp de vinho! Você achou estranho na hora, mas depois acabou bebendo junto comigo. 😉",
 ];
 
@@ -62,13 +61,13 @@ export const QUIZ1_OPTIONS: { id: string; label: string; correct?: boolean; msg?
   {
     id: "samuel",
     label: "SAMUEL",
-    msg: "> aaaah, não minta pra mim, Bombom! quem apaga primeiro é você — e você sabe. ❤",
+    msg: "> Ahh mentirosa kkk, eu sou o que mais aguento! Em muitas coisas se é que me entende hehehe",
   },
   { id: "camila", label: "CAMILA", correct: true },
   {
     id: "gato",
     label: "O GATO",
-    msg: "> o gato só apagou depois de te ver apagar. até ele te copia, olha só.",
+    msg: "> a gata é tu mesma! Sz",
   },
   {
     id: "ninguem",
@@ -111,7 +110,7 @@ export const LOVE_MATH_OPTIONS: { id: string; label: string; correct?: boolean; 
 ];
 
 // Phase 04 — Simon
-export const SIMON_SEQUENCE = [0, 2, 1, 3, 2, 0, 3, 1] as const; // 4 colors, 8 steps
+export const SIMON_SEQUENCE = [0, 2, 1, 3, 2, 0, 3, 1, 0, 3] as const; // 4 colors, 10 steps
 
 // Phase 02 — Caesar
 export const CAESAR_PLAIN = "AMO MUITO VOCE";
