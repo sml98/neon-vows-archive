@@ -23,6 +23,8 @@ Depois você voltou de Uber e eu fui a pé para o apartamento. Eu não estava ac
 
 Nós nos despedimos felizes. E cada dia contigo desde então é uma fase que eu não quero pular. Cada beijo é um save point. Esta aventura é só para te lembrar que eu guardei os detalhes — inclusive os que parecem pequenos demais para qualquer outra pessoa.
 
+Poucos dias depois chegou 09/10/2025, e eu resolvi oficializar o namoro com flores, aliança e... num motel. Porque aparentemente restaurante, praça e pôr do sol estavam em manutenção naquele dia. Eu, meio deslocado naquele ambiente, tentando agir naturalmente com um buquê e uma aliança: uma operação discretíssima, bah. Foi estranho, cômico, diferente, muito bom — e completamente nosso.
+
 Te amo, minha vida. Agora continua — ainda tem surpresa.
 — ${EXPERIENCE.playerOne.name}`;
 
