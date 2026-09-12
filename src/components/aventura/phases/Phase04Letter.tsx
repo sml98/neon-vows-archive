@@ -2,6 +2,7 @@ import { useTypewriter } from "@/lib/aventura/useTypewriter";
 import { Caret } from "../Caret";
 import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 interface Props {
   onNext: () => void;
@@ -10,15 +11,21 @@ interface Props {
 
 const LETTER_TEXT = `Meu bem, se você chegou até aqui, é porque você é teimosa que nem eu. E é por isso que te amo.
 
-Lembra do nosso primeiro encontro? Eu ali, querendo tomar um chopp de vinho no shopping, e você me olhando com aquela cara de 'esse cara é maluco'. Mas no final, você bebeu junto. E é assim que a gente funciona: eu sou o maluco, e você é a pessoa que torna a maluquice bonita.
+Antes daquele encontro, a gente já tinha conseguido discutir, parar de se falar, voltar por causa de um story no Instagram e discutir outra vez. Nem tínhamos nos visto e já parecíamos dois protagonistas teimosos tentando decidir quem mandava no roteiro.
+
+Então chegou o shopping. Você apareceu com um copinho de café nas mãos e eu lembro como se fosse ontem: a cor da sua pele, o brilho dos seus olhos, o seu corpo, a sua altura. Tudo em você me fascinou antes mesmo que eu entendesse onde aquilo ia dar.
+
+Eu só queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink} numa tarde de semana. Você achou uma loucura e chegou a desconfiar que eu fosse alcoólatra. No fim, bebeu comigo. Essa parte ainda me faz rir: você questiona a minha maluquice e, quando eu vejo, já está dividindo ela comigo.
+
+Depois você voltou de Uber e eu fui a pé para o apartamento. Eu não estava acostumado a caminhar e cheguei a ganhar calos nos pés. Foi o primeiro dano físico oficialmente causado por me apaixonar por você — e eu repetiria todo o caminho.
 
 Cada dia contigo é uma fase nova que eu não quero pular. Cada beijo é um save point. E essa aventura? É só pra te lembrar que eu pensei em cada detalhe, como eu penso em você cada segundo.
 
 Te amo, minha vida. Agora continua — ainda tem surpresa.
-— Samuel`;
+— ${EXPERIENCE.playerOne.name}`;
 
 export function Phase04Letter({ onNext, onBeep }: Props) {
-  const { output, done } = useTypewriter(LETTER_TEXT, 45);
+  const { output, done, skip } = useTypewriter(LETTER_TEXT, 45);
 
   return (
     <div className="w-full flex flex-col items-center gap-5">
@@ -32,6 +39,16 @@ export function Phase04Letter({ onNext, onBeep }: Props) {
           {!done && <Caret color="pink" />}
         </p>
       </CyberTextBox>
+
+      {!done && (
+        <button
+          type="button"
+          onClick={skip}
+          className="min-h-9 font-display text-[8px] text-white/55 underline underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-cyan)]"
+        >
+          [ EXIBIR MENSAGEM COMPLETA ]
+        </button>
+      )}
 
       {done && (
         <div

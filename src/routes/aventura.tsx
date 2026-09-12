@@ -37,15 +37,24 @@ export const Route = createFileRoute("/aventura")({
 });
 
 function AventuraPage() {
-  const { phase, goTo, achievements, unlock, gift } = useAventuraState();
-  const { beep, setMuted, playFreq } = useBeep();
-  const [muted, setMutedState] = useState(false);
+  const { phase, goTo, achievements, unlock, gift, ready, restart } = useAventuraState();
+  const { beep, setMuted, playFreq, startAmbient, stopAmbient } = useBeep();
+  const [muted, setMutedState] = useState(true);
+  const testMode =
+    ready &&
+    typeof window !== "undefined" &&
+    new URLSearchParams(window.location.search).get("test") === "1";
 
   const toggleMute = () => {
     const next = !muted;
     setMuted(next);
     setMutedState(next);
-    if (!next) beep("click");
+    if (next) {
+      stopAmbient();
+    } else {
+      startAmbient();
+      beep("success");
+    }
   };
 
   const advance = (from: PhaseId, to: PhaseId) => {
@@ -53,15 +62,41 @@ function AventuraPage() {
     goTo(to);
   };
 
+  const confirmRestart = () => {
+    if (window.confirm("Reiniciar toda a jornada e apagar o progresso salvo neste aparelho?")) {
+      restart();
+      beep("click");
+    }
+  };
+
+  if (!ready) {
+    return (
+      <div className="grid min-h-dvh place-items-center bg-[var(--neon-bg)] font-display text-xs text-[var(--neon-cyan)]">
+        CARREGANDO SAVE...
+      </div>
+    );
+  }
+
   return (
-    <AventuraShell muted={muted} onToggleMute={toggleMute} gift={gift}>
+    <AventuraShell
+      muted={muted}
+      onToggleMute={toggleMute}
+      gift={gift}
+      phase={phase}
+      achievementCount={achievements.length}
+      onRestart={confirmRestart}
+      testMode={testMode}
+      onPhaseSelect={goTo}
+    >
       <PhaseTransition keyId={phase}>
         {phase === 1 && <Phase01Password onSolved={() => advance(1, 2)} onBeep={beep} />}
         {phase === 2 && <Phase02Chocolate onNext={() => advance(2, 3)} onBeep={beep} />}
         {phase === 3 && <Phase03Pact onNext={() => advance(3, 4)} onBeep={beep} gift={gift} />}
         {phase === 4 && <Phase04Letter onNext={() => advance(4, 5)} onBeep={beep} />}
         {phase === 5 && <Phase05Memory onNext={() => advance(5, 6)} onBeep={beep} />}
-        {phase === 6 && <Phase04Hack onNext={() => advance(6, 7)} onBeep={beep} playFreq={playFreq} />}
+        {phase === 6 && (
+          <Phase04Hack onNext={() => advance(6, 7)} onBeep={beep} playFreq={playFreq} />
+        )}
         {phase === 7 && <Phase05Quiz1 onNext={() => advance(7, 8)} onBeep={beep} />}
         {phase === 8 && <Phase06Quiz2 onNext={() => advance(8, 9)} onBeep={beep} />}
         {phase === 9 && <Phase07BodyParts onNext={() => advance(9, 10)} onBeep={beep} />}

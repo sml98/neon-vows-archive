@@ -18,29 +18,68 @@ const QUESTIONS: Question[] = [
     id: 1,
     text: "Quem de nós dois é o mais ciumento e insuportável de um jeito fofo? 👀",
     options: [
-      { label: "Eu (Camila)", correct: false, response: "> Quase! Mas eu sou bem pior kkk tenta de novo." },
-      { label: "Você (Samuel)", correct: true, response: "> Sabia que você ia votar em mim! Mas confessa: eu sou a sua chatice preferida. 💜" },
-      { label: "Ninguém, somos santos", correct: false, response: "> Aham, conta outra kkk somos dois chatinhos. Tenta de novo." }
-    ]
+      {
+        label: "Eu (Camila)",
+        correct: false,
+        response: "> Quase! Mas eu sou bem pior kkk tenta de novo.",
+      },
+      {
+        label: "Você (Samuel)",
+        correct: true,
+        response:
+          "> Sabia que você ia votar em mim! Mas confessa: eu sou a sua chatice preferida. 💜",
+      },
+      {
+        label: "Ninguém, somos santos",
+        correct: false,
+        response: "> Aham, conta outra kkk somos dois chatinhos. Tenta de novo.",
+      },
+    ],
   },
   {
     id: 2,
     text: "Qual é o nosso principal objetivo na campanha desse co-op da vida? 🎮",
     options: [
-      { label: "Ficar jogando o dia todo", correct: false, response: "> Seria bom, mas tem algo muito maior na nossa mira..." },
-      { label: "Construir um melhorado e mais lindo futuro juntos, independente das situações, pois ao seu lado tenho a força necessária para lutar por isto!", correct: true, response: "> Com certeza, meu amor! Mal posso esperar para carregar essa fase ao seu lado." },
-      { label: "Viajar até cansar", correct: false, response: "> Legal, mas construir nosso lar é o nosso principal savepoint. Tenta de novo." }
-    ]
+      {
+        label: "Ficar jogando o dia todo",
+        correct: false,
+        response: "> Seria bom, mas tem algo muito maior na nossa mira...",
+      },
+      {
+        label:
+          "Construir um melhorado e mais lindo futuro juntos, independente das situações, pois ao seu lado tenho a força necessária para lutar por isto!",
+        correct: true,
+        response: "> Com certeza, meu amor! Mal posso esperar para carregar essa fase ao seu lado.",
+      },
+      {
+        label: "Viajar até cansar",
+        correct: false,
+        response: "> Legal, mas construir nosso lar é o nosso principal savepoint. Tenta de novo.",
+      },
+    ],
   },
   {
     id: 3,
     text: "O que acontece comigo quando vejo você sorrir? ✨",
     options: [
-      { label: "Meu processador dá overclock completo ⚡", correct: true, response: "> Exato, minha vida! Meu sistema inteiro reinicia e o meu coração derrete de amor." },
-      { label: "Eu fico travado sem reação", correct: false, response: "> Fico sim, mas tem uma explicação mais nerd/tecnológica pra isso..." },
-      { label: "Eu fico normal", correct: false, response: "> Mentira! Meu coração bate a mil por hora. Tenta de novo." }
-    ]
-  }
+      {
+        label: "Meu processador dá overclock completo ⚡",
+        correct: true,
+        response:
+          "> Exato, minha vida! Meu sistema inteiro reinicia e o meu coração derrete de amor.",
+      },
+      {
+        label: "Eu fico travado sem reação",
+        correct: false,
+        response: "> Fico sim, mas tem uma explicação mais nerd/tecnológica pra isso...",
+      },
+      {
+        label: "Eu fico normal",
+        correct: false,
+        response: "> Mentira! Meu coração bate a mil por hora. Tenta de novo.",
+      },
+    ],
+  },
 ];
 
 export function Phase11PersonalQuiz({ onNext, onBeep }: Props) {
@@ -114,7 +153,13 @@ export function Phase11PersonalQuiz({ onNext, onBeep }: Props) {
 
       {message && (
         <CyberTextBox accent={isCorrect ? "cyan" : "pink"}>
-          <p className={isCorrect ? "neon-text-cyan text-xs sm:text-sm leading-relaxed text-left font-terminal" : "text-[var(--neon-pink)] text-xs sm:text-sm leading-relaxed text-left font-terminal"}>
+          <p
+            className={
+              isCorrect
+                ? "neon-text-cyan text-xs sm:text-sm leading-relaxed text-left font-terminal"
+                : "text-[var(--neon-pink)] text-xs sm:text-sm leading-relaxed text-left font-terminal"
+            }
+          >
             {message}
           </p>
         </CyberTextBox>

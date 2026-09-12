@@ -237,16 +237,27 @@ function ArcadeTicket() {
       </div>
 
       <div className="flex flex-col gap-2 text-left text-[9px] tracking-wide my-4 font-mono">
-        <div><span className="text-[var(--neon-pink)]">PLAYER 1:</span> SAMUEL (SAMUKA)</div>
-        <div><span className="text-[var(--neon-pink)]">PLAYER 2:</span> CAMILA</div>
-        <div><span className="text-[var(--neon-pink)]">JORNADA:</span> CO-OP VITALÍCIA</div>
-        <div><span className="text-[var(--neon-pink)]">STATUS:</span> AMOR INFINITO HABILITADO</div>
-        <div><span className="text-[var(--neon-pink)]">EASTER EGGS:</span> ENCONTRO NO SHOPPING DESBLOQUEADO</div>
+        <div>
+          <span className="text-[var(--neon-pink)]">PLAYER 1:</span> SAMUEL (SAMUKA)
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">PLAYER 2:</span> CAMILA
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">JORNADA:</span> CO-OP VITALÍCIA
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">STATUS:</span> AMOR INFINITO HABILITADO
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">EASTER EGGS:</span> ENCONTRO NO SHOPPING
+          DESBLOQUEADO
+        </div>
       </div>
 
       <div className="border-t border-[var(--neon-pink)] pt-4 mt-4">
         <div className="h-8 flex items-center justify-center gap-[2px] opacity-75">
-          {[1,3,2,1,4,2,1,3,2,4,1,2,3,1,2,4,1,3,2,1,4].map((w, idx) => (
+          {[1, 3, 2, 1, 4, 2, 1, 3, 2, 4, 1, 2, 3, 1, 2, 4, 1, 3, 2, 1, 4].map((w, idx) => (
             <div key={idx} className="bg-[var(--neon-cyan)] h-full" style={{ width: `${w}px` }} />
           ))}
         </div>
@@ -304,7 +315,8 @@ export function Phase10Finale({ achievements }: Props) {
               &gt; nenhuma engine renderiza algo tão perfeito quanto você ao meu lado.
               <br />
               <br />
-              &gt; obrigado por atravessar cada fase comigo. te amo em todos os pixels, em todos os frames, em todos os finais possíveis. <Caret color="pink" />
+              &gt; obrigado por atravessar cada fase comigo. te amo em todos os pixels, em todos os
+              frames, em todos os finais possíveis. <Caret color="pink" />
             </p>
           </CyberTextBox>
 

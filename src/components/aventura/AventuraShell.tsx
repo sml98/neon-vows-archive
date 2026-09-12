@@ -1,14 +1,30 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CatSprites } from "./CatSprites";
+import { TOTAL_PHASES, type PhaseId } from "@/lib/aventura/useAventuraState";
 
 interface Props {
   children: ReactNode;
   muted: boolean;
   onToggleMute: () => void;
   gift?: "chocolate" | "flor" | "both" | null;
+  phase: PhaseId;
+  achievementCount: number;
+  onRestart: () => void;
+  testMode: boolean;
+  onPhaseSelect: (phase: PhaseId) => void;
 }
 
-export function AventuraShell({ children, muted, onToggleMute, gift }: Props) {
+export function AventuraShell({
+  children,
+  muted,
+  onToggleMute,
+  gift,
+  phase,
+  achievementCount,
+  onRestart,
+  testMode,
+  onPhaseSelect,
+}: Props) {
   const [reduced, setReduced] = useState(false);
 
   useEffect(() => {
@@ -21,7 +37,7 @@ export function AventuraShell({ children, muted, onToggleMute, gift }: Props) {
 
   return (
     <div
-      className="relative min-h-dvh w-full flex items-center justify-center px-3 py-6 font-terminal text-white overflow-hidden shooting-stars"
+      className="relative min-h-dvh w-full flex items-center justify-center overflow-x-hidden px-3 py-20 font-terminal text-white shooting-stars sm:py-10"
       style={{
         backgroundColor: "var(--neon-bg)",
       }}
@@ -100,6 +116,53 @@ export function AventuraShell({ children, muted, onToggleMute, gift }: Props) {
         className="relative z-10 w-full max-w-md p-5 sm:p-6 flex flex-col items-center text-center border-2 border-[var(--neon-pink)] bg-[color:var(--neon-surface)] backdrop-blur-sm"
         style={{ boxShadow: "var(--shadow-neon-pink), inset 0 0 18px oklch(0.72 0.32 330 / 0.35)" }}
       >
+        <div className="mb-5 w-full border-b border-[var(--neon-cyan)]/50 pb-3 text-left">
+          <div className="mb-2 flex items-center justify-between gap-3 font-display text-[8px] tracking-wider text-[var(--neon-cyan)] sm:text-[9px]">
+            <span>NEON VOWS // FASE {String(phase).padStart(2, "0")}</span>
+            <span>
+              {achievementCount}/{TOTAL_PHASES - 1} CONQUISTAS
+            </span>
+          </div>
+          <div
+            className="h-2 overflow-hidden border border-[var(--neon-cyan)] bg-black/80"
+            role="progressbar"
+            aria-label="Progresso da aventura"
+            aria-valuenow={phase}
+            aria-valuemin={1}
+            aria-valuemax={TOTAL_PHASES}
+          >
+            <div
+              className="h-full bg-[var(--neon-pink)] transition-[width] duration-500"
+              style={{ width: `${(phase / TOTAL_PHASES) * 100}%` }}
+            />
+          </div>
+          {phase > 1 && (
+            <button
+              type="button"
+              onClick={onRestart}
+              className="mt-2 min-h-7 font-display text-[8px] text-white/55 underline-offset-4 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-cyan)]"
+            >
+              [ REINICIAR JORNADA ]
+            </button>
+          )}
+          {testMode && (
+            <label className="mt-2 flex items-center justify-between gap-3 border border-dashed border-[var(--neon-pink)] p-2 font-display text-[8px] text-[var(--neon-pink)]">
+              <span>TEST MODE</span>
+              <select
+                aria-label="Ir diretamente para uma fase"
+                value={phase}
+                onChange={(event) => onPhaseSelect(Number(event.target.value) as PhaseId)}
+                className="min-h-8 border border-[var(--neon-cyan)] bg-black px-2 text-[var(--neon-cyan)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                {Array.from({ length: TOTAL_PHASES }, (_, index) => index + 1).map((id) => (
+                  <option key={id} value={id}>
+                    FASE {String(id).padStart(2, "0")}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
+        </div>
         <CatSprites />
         {children}
       </main>

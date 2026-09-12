@@ -4,6 +4,7 @@ import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
 import { PASSWORD_ANSWERS, PASSWORD_HINT_FRAGMENTS } from "@/lib/aventura/content";
 import { normalize } from "@/lib/aventura/normalize";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 interface Props {
   onSolved: () => void;
@@ -60,18 +61,22 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
         <p>
           &gt; SISTEMA CARREGANDO...
           <br />
-          &gt; detectando presença... Bombom identificada.
+          &gt; detectando presença... {EXPERIENCE.playerTwo.nickname} identificada.
           <br />
           &gt; aviso: este terminal contém uma mensagem classificada.
           <br />
           &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.
           <br />
-          &gt; para acessar, insira o código secreto. Já que me amas, saberás tranquilamente a resposta!
+          &gt; para acessar, insira o código secreto. Já que me amas, saberás tranquilamente a
+          resposta!
         </p>
       </CyberTextBox>
 
       {/* HP hearts */}
-      <div className="flex items-center gap-2 font-display text-xs" aria-label={`tentativas restantes: ${hp}`}>
+      <div
+        className="flex items-center gap-2 font-display text-xs"
+        aria-label={`tentativas restantes: ${hp}`}
+      >
         <span className="neon-text-cyan">HP:</span>
         {Array.from({ length: MAX_HP }).map((_, i) => (
           <span
@@ -117,7 +122,9 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
         <CyberTextBox accent="pink">
           <div className="space-y-1 italic text-xs">
             {PASSWORD_HINT_FRAGMENTS.slice(0, cluesShown).map((frag, i) => (
-              <p key={i} className="text-[var(--neon-pink)]">{frag}</p>
+              <p key={i} className="text-[var(--neon-pink)]">
+                {frag}
+              </p>
             ))}
           </div>
         </CyberTextBox>

@@ -23,10 +23,7 @@ export function ProgressBar({ value, segments = 10 }: Props) {
         style={{ gridTemplateColumns: `repeat(${segments}, 1fr)` }}
       >
         {Array.from({ length: segments }).map((_, i) => (
-          <div
-            key={i}
-            className="border-r border-black/70 last:border-r-0"
-          />
+          <div key={i} className="border-r border-black/70 last:border-r-0" />
         ))}
       </div>
     </div>

@@ -45,12 +45,13 @@ export function Phase03Pact({ onNext, onBeep, gift }: Props) {
 
       <CyberTextBox accent="cyan">
         <p className="text-left text-xs leading-relaxed font-terminal">
-          &gt; Para prosseguir, o sistema exige a assinatura do Contrato de Co-op Vitalício. Leia os termos abaixo:
+          &gt; Para prosseguir, o sistema exige a assinatura do Contrato de Co-op Vitalício. Leia os
+          termos abaixo:
         </p>
       </CyberTextBox>
 
       {/* Retro EULA Box */}
-      <div 
+      <div
         className="w-full max-h-48 overflow-y-auto border-2 border-[var(--neon-cyan)] bg-black/80 p-3 text-left font-terminal text-[10px] sm:text-xs leading-relaxed text-white/90 shadow-[inset_0_0_10px_rgba(6,182,212,0.2)]"
         style={{ scrollbarWidth: "thin" }}
       >
@@ -58,20 +59,28 @@ export function Phase03Pact({ onNext, onBeep, gift }: Props) {
           ★ TERMOS DE RELACIONAMENTO CO-OP ★
         </p>
         <p className="mb-2">
-          <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 1:</span> Você concorda em ser o meu save point oficial, garantindo cafuné e cura de HP sempre que o sistema estiver instável.
+          <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 1:</span> Você concorda em
+          ser o meu save point oficial, garantindo cafuné e cura de HP sempre que o sistema estiver
+          instável.
         </p>
         {(gift === "chocolate" || gift === "both" || !gift) && (
           <p className="mb-2">
-            <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 2:</span> O chocolate físico recebido concede Buff de Felicidade de +100% quando consumido em dupla (não vale comer tudo sozinha, hein? kkk).
+            <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 2:</span> O chocolate
+            físico recebido concede Buff de Felicidade de +100% quando consumido em dupla (não vale
+            comer tudo sozinha, hein? kkk).
           </p>
         )}
         {(gift === "flor" || gift === "both" || !gift) && (
           <p className="mb-2">
-            <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 3:</span> A flor física é declarada como um "Artefato Lendário Nível 99", devendo ser cultivada com carinho para aumentar o escudo de amor eterno.
+            <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 3:</span> A flor física é
+            declarada como um "Artefato Lendário Nível 99", devendo ser cultivada com carinho para
+            aumentar o escudo de amor eterno.
           </p>
         )}
         <p>
-          <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 4:</span> Ambas as partes concordam que bugs, chatices e ciúmes bobos serão resolvidos com abraços apertados, sem necessidade de patch de correção.
+          <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 4:</span> Ambas as partes
+          concordam que bugs, chatices e ciúmes bobos serão resolvidos com abraços apertados, sem
+          necessidade de patch de correção.
         </p>
       </div>
 

@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 interface Props {
   onNext: () => void;
@@ -14,22 +15,22 @@ interface TimelineEvent {
 }
 
 const EVENTS: TimelineEvent[] = [
-  { id: 1, text: "Primeiro olhar na praça de alimentação", order: 1 },
-  { id: 2, text: "Chopp de vinho esquisito aceito", order: 2 },
-  { id: 3, text: "Primeiro beijo", order: 3 },
-  { id: 4, text: "Primeiro 'te amo'", order: 4 },
-  { id: 5, text: "Declaração codificada desbloqueada", order: 5 },
+  ...EXPERIENCE.relationship.originStory.map((text, index) => ({
+    id: index + 1,
+    text,
+    order: index + 1,
+  })),
 ];
 
 // Helper to shuffle array
-function shuffle<T>(arr: T[]): T[] {
+function shuffle<T extends { order: number }>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [a[i], a[j]] = [a[j], a[i]];
   }
   // Make sure it is shuffled (not in correct order)
-  if (a.every((item, idx) => (item as any).order === idx + 1)) {
+  if (a.every((item, idx) => item.order === idx + 1)) {
     a.reverse();
   }
   return a;
@@ -37,44 +38,56 @@ function shuffle<T>(arr: T[]): T[] {
 
 export function Phase13Timeline({ onNext, onBeep }: Props) {
   const [pool, setPool] = useState<TimelineEvent[]>(() => shuffle(EVENTS));
-  const [timeline, setTimeline] = useState<(TimelineEvent | null)[]>([null, null, null, null, null]);
+  const [timeline, setTimeline] = useState<(TimelineEvent | null)[]>([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [flashError, setFlashError] = useState(false);
 
-  const handlePoolTap = useCallback((event: TimelineEvent) => {
-    if (isSuccess || flashError) return;
-    onBeep("click");
+  const handlePoolTap = useCallback(
+    (event: TimelineEvent) => {
+      if (isSuccess || flashError) return;
+      onBeep("click");
 
-    // Find first empty slot in timeline
-    const emptyIndex = timeline.indexOf(null);
-    if (emptyIndex === -1) return; // Timeline is full
+      // Find first empty slot in timeline
+      const emptyIndex = timeline.indexOf(null);
+      if (emptyIndex === -1) return; // Timeline is full
 
-    setTimeline((prev) => {
-      const next = [...prev];
-      next[emptyIndex] = event;
-      return next;
-    });
+      setTimeline((prev) => {
+        const next = [...prev];
+        next[emptyIndex] = event;
+        return next;
+      });
 
-    setPool((prev) => prev.filter((e) => e.id !== event.id));
-  }, [isSuccess, flashError, timeline, onBeep]);
+      setPool((prev) => prev.filter((e) => e.id !== event.id));
+    },
+    [isSuccess, flashError, timeline, onBeep],
+  );
 
-  const handleTimelineTap = useCallback((index: number) => {
-    if (isSuccess || flashError) return;
-    const event = timeline[index];
-    if (!event) return;
+  const handleTimelineTap = useCallback(
+    (index: number) => {
+      if (isSuccess || flashError) return;
+      const event = timeline[index];
+      if (!event) return;
 
-    onBeep("click");
+      onBeep("click");
 
-    // Remove from timeline
-    setTimeline((prev) => {
-      const next = [...prev];
-      next[index] = null;
-      return next;
-    });
+      // Remove from timeline
+      setTimeline((prev) => {
+        const next = [...prev];
+        next[index] = null;
+        return next;
+      });
 
-    // Add back to pool
-    setPool((prev) => [...prev, event]);
-  }, [isSuccess, flashError, timeline, onBeep]);
+      // Add back to pool
+      setPool((prev) => [...prev, event]);
+    },
+    [isSuccess, flashError, timeline, onBeep],
+  );
 
   const checkTimeline = () => {
     if (isSuccess || flashError) return;
@@ -164,9 +177,15 @@ export function Phase13Timeline({ onNext, onBeep }: Props) {
               className="w-6 h-6 rounded-full border-2 flex items-center justify-center font-display text-xs select-none transition-colors"
               style={{
                 borderColor: isSuccess ? "var(--neon-pink)" : "var(--neon-cyan)",
-                backgroundColor: isSuccess ? "var(--neon-pink)" : event ? "var(--neon-cyan)" : "black",
+                backgroundColor: isSuccess
+                  ? "var(--neon-pink)"
+                  : event
+                    ? "var(--neon-cyan)"
+                    : "black",
                 color: isSuccess ? "black" : event ? "black" : "white",
-                boxShadow: event ? `0 0 8px ${isSuccess ? "var(--neon-pink)" : "var(--neon-cyan)"}` : "none",
+                boxShadow: event
+                  ? `0 0 8px ${isSuccess ? "var(--neon-pink)" : "var(--neon-cyan)"}`
+                  : "none",
               }}
             >
               {idx + 1}
@@ -216,13 +235,11 @@ export function Phase13Timeline({ onNext, onBeep }: Props) {
         <>
           <CyberTextBox accent="pink">
             <p className="text-sm text-[var(--neon-pink)] leading-relaxed">
-              &gt; nossa história, na ordem certa. e o melhor capítulo? é o próximo. porque ele é com você, meu amor. ❤
+              &gt; nossa história, na ordem certa. e o melhor capítulo? é o próximo. porque ele é
+              com você, meu amor. ❤
             </p>
           </CyberTextBox>
-          <NeonButton
-            variant="pink"
-            onClick={onNext}
-          >
+          <NeonButton variant="pink" onClick={onNext}>
             [ AVANÇAR ]
           </NeonButton>
         </>

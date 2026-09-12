@@ -84,7 +84,8 @@ export function CaesarDecoder({ onSolved, onBeep }: Props) {
           <div
             className="absolute inset-0 pointer-events-none opacity-20 mix-blend-color-dodge"
             style={{
-              backgroundImage: "repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px)",
+              backgroundImage:
+                "repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px)",
               opacity: Math.min(0.65, Math.abs(shift - target) * 0.06),
             }}
           />
@@ -98,9 +99,9 @@ export function CaesarDecoder({ onSolved, onBeep }: Props) {
           }
           style={{
             filter: isMatch ? "none" : `blur(${Math.min(1.5, Math.abs(shift - target) * 0.12)}px)`,
-            textShadow: isMatch 
-              ? "0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan)" 
-              : `${Math.min(5, Math.abs(shift - target) * 0.5)}px 0 rgba(255,0,128,0.6), -${Math.min(5, Math.abs(shift - target) * 0.5)}px 0 rgba(0,255,255,0.6)`
+            textShadow: isMatch
+              ? "0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan)"
+              : `${Math.min(5, Math.abs(shift - target) * 0.5)}px 0 rgba(255,0,128,0.6), -${Math.min(5, Math.abs(shift - target) * 0.5)}px 0 rgba(0,255,255,0.6)`,
           }}
         >
           {current}
@@ -110,13 +111,23 @@ export function CaesarDecoder({ onSolved, onBeep }: Props) {
       {/* Sintonizer Controls */}
       <div className="w-full flex flex-col gap-2 mt-2">
         <div className="flex items-center justify-between gap-2">
-          <NeonButton variant="pink" fullWidth={false} onClick={() => bump(-1)} className="px-4 py-2">
+          <NeonButton
+            variant="pink"
+            fullWidth={false}
+            onClick={() => bump(-1)}
+            className="px-4 py-2"
+          >
             − 1
           </NeonButton>
           <span className="font-display text-xs neon-text-cyan">
             SINTONIA (SHIFT): {shift > 0 ? `+${shift}` : shift}
           </span>
-          <NeonButton variant="pink" fullWidth={false} onClick={() => bump(1)} className="px-4 py-2">
+          <NeonButton
+            variant="pink"
+            fullWidth={false}
+            onClick={() => bump(1)}
+            className="px-4 py-2"
+          >
             + 1
           </NeonButton>
         </div>

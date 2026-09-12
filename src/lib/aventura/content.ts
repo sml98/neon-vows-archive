@@ -1,16 +1,27 @@
-export const PASSWORD_ANSWERS = ["09/10/25", "09/10/2025"];
+import { EXPERIENCE } from "./experience";
+
+export const PASSWORD_ANSWERS = [
+  EXPERIENCE.relationship.startDateShort,
+  EXPERIENCE.relationship.startDateFull,
+];
 
 export const PASSWORD_HINT_FRAGMENTS = [
-  "> pista 1/2: foi o dia em que apertei START na melhor coop da minha vida.",
+  "> pista 1/2: foi o dia em que te vi ao vivo pela primeira vez.",
   "> pista 2/2: outubro estava começando, e eu, terminando de me apaixonar.",
 ];
 
-export const MEETING_ANSWERS = ["shopping", "shopping center", "praça de alimentação", "praca de alimentacao", "alimentacao"];
+export const MEETING_ANSWERS = [
+  "shopping",
+  "shopping center",
+  "praça de alimentação",
+  "praca de alimentacao",
+  "alimentacao",
+];
 
 export const MEETING_CLUES = [
-  "> pista 1/3: estávamos rodeados de opções de comida na praça de alimentação do shopping.",
-  "> pista 2/3: tu chegou tomando seu cafézinho, nesse momento eu já havia me admirado com sua bela presença!",
-  "> pista 3/3: ...e eu queria tomar um chopp de vinho! Você achou estranho na hora, mas depois acabou bebendo junto comigo. 😉",
+  `> pista 1/3: estávamos rodeados de opções de comida na ${EXPERIENCE.relationship.firstMeeting.place}.`,
+  `> pista 2/3: tu chegou com ${EXPERIENCE.relationship.firstMeeting.camilaArrivalDetail}. Eu lembro como se fosse ontem.`,
+  `> pista 3/3: eu queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink}; você suspeitou até que eu fosse alcoólatra... e depois bebeu comigo. 😉`,
 ];
 
 export type BodyPart = "cabelo" | "olhos" | "estilo" | "curvas" | "boca";

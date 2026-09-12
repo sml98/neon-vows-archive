@@ -47,14 +47,23 @@ export function Phase05Quiz1({ onNext, onBeep }: Props) {
       </div>
 
       {error && !correct && (
-        <p role="alert" aria-live="polite" className="text-[var(--neon-pink)] font-terminal text-lg">
+        <p
+          role="alert"
+          aria-live="polite"
+          className="text-[var(--neon-pink)] font-terminal text-lg"
+        >
           {error}
         </p>
       )}
 
       {correct && (
-        <p role="status" aria-live="polite" className="text-[var(--neon-cyan)] font-terminal text-lg animate-glitch-fade">
-          &gt; Resposta exata! Você apaga antes mesmo dos trailers terminarem kkk. Te amo, minha dorminhoca preferida. ❤
+        <p
+          role="status"
+          aria-live="polite"
+          className="text-[var(--neon-cyan)] font-terminal text-lg animate-glitch-fade"
+        >
+          &gt; Resposta exata! Você apaga antes mesmo dos trailers terminarem kkk. Te amo, minha
+          dorminhoca preferida. ❤
         </p>
       )}
     </div>

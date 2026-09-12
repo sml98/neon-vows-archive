@@ -89,7 +89,7 @@ export function Phase09Poem({ onNext, onBeep }: Props) {
               {opt.label}
             </button>
           ))}
-          
+
           {/* Action keys */}
           <button
             type="button"
@@ -112,7 +112,15 @@ export function Phase09Poem({ onNext, onBeep }: Props) {
 
       {msg && (
         <CyberTextBox accent={solved ? "cyan" : "pink"}>
-          <p className={solved ? "neon-text-cyan text-sm leading-relaxed" : "text-[var(--neon-pink)] text-sm leading-relaxed"}>{msg}</p>
+          <p
+            className={
+              solved
+                ? "neon-text-cyan text-sm leading-relaxed"
+                : "text-[var(--neon-pink)] text-sm leading-relaxed"
+            }
+          >
+            {msg}
+          </p>
         </CyberTextBox>
       )}
 

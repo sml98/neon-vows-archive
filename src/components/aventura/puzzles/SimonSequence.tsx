@@ -12,7 +12,7 @@ interface Props {
 const PADS = [
   { color: "oklch(0.72 0.32 330)", label: "❤", freq: 261.63 }, // C4
   { color: "oklch(0.86 0.19 200)", label: "❤", freq: 329.63 }, // E4
-  { color: "oklch(0.82 0.22 85)", label: "❤", freq: 392.00 },  // G4
+  { color: "oklch(0.82 0.22 85)", label: "❤", freq: 392.0 }, // G4
   { color: "oklch(0.65 0.28 305)", label: "❤", freq: 523.25 }, // C5
 ];
 
@@ -38,24 +38,28 @@ export function SimonSequence({ onSolved, onBeep, playFreq }: Props) {
     setProgress(0);
     seq.forEach((pad, i) => {
       timers.current.push(
-        window.setTimeout(() => {
-          setFlash(pad);
-          if (playFreq) {
-            playFreq(PADS[pad].freq, 0.35, "sine");
-          } else {
-            onBeep("click");
-          }
-        }, 500 + i * 650)
+        window.setTimeout(
+          () => {
+            setFlash(pad);
+            if (playFreq) {
+              playFreq(PADS[pad].freq, 0.35, "sine");
+            } else {
+              onBeep("click");
+            }
+          },
+          500 + i * 650,
+        ),
       );
-      timers.current.push(
-        window.setTimeout(() => setFlash(null), 500 + i * 650 + 380)
-      );
+      timers.current.push(window.setTimeout(() => setFlash(null), 500 + i * 650 + 380));
     });
     timers.current.push(
-      window.setTimeout(() => {
-        setPhase("input");
-        setStatus("> agora repita — sincronize com o meu coração.");
-      }, 500 + seq.length * 650 + 200)
+      window.setTimeout(
+        () => {
+          setPhase("input");
+          setStatus("> agora repita — sincronize com o meu coração.");
+        },
+        500 + seq.length * 650 + 200,
+      ),
     );
   }, [onBeep, playFreq, seq]);
 
@@ -129,7 +133,11 @@ export function SimonSequence({ onSolved, onBeep, playFreq }: Props) {
       </div>
 
       {status && (
-        <p role="status" aria-live="polite" className="font-terminal text-lg text-[var(--neon-cyan)] min-h-[28px] mt-2">
+        <p
+          role="status"
+          aria-live="polite"
+          className="font-terminal text-lg text-[var(--neon-cyan)] min-h-[28px] mt-2"
+        >
           {status}
         </p>
       )}

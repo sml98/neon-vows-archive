@@ -54,9 +54,7 @@ function Dial({
         className="relative w-14 h-16 sm:w-16 sm:h-20 flex items-center justify-center
                     border-2 bg-black/80 transition-all duration-500"
         style={{
-          borderColor: correct
-            ? "var(--neon-cyan)"
-            : "oklch(0.4 0 0 / 0.6)",
+          borderColor: correct ? "var(--neon-cyan)" : "oklch(0.4 0 0 / 0.6)",
           boxShadow: correct
             ? "0 0 12px var(--neon-cyan), inset 0 0 8px oklch(0.86 0.19 200 / 0.15)"
             : "inset 0 0 6px oklch(0 0 0 / 0.5)",
@@ -117,16 +115,13 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
 
   const isCorrect = digits.every((d, i) => d === SECRET[i]);
 
-  const updateDigit = useCallback(
-    (index: number, value: number) => {
-      setDigits((prev) => {
-        const next = [...prev];
-        next[index] = value;
-        return next;
-      });
-    },
-    [],
-  );
+  const updateDigit = useCallback((index: number, value: number) => {
+    setDigits((prev) => {
+      const next = [...prev];
+      next[index] = value;
+      return next;
+    });
+  }, []);
 
   const handleSubmit = () => {
     if (stage !== "cracking") return;
@@ -149,17 +144,11 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
       setShaking(true);
 
       if (newAttempts >= 4) {
-        setErrorMsg(
-          "> dica final: pensa no dia e no mês que a gente começou, Bombom. 😉",
-        );
+        setErrorMsg("> dica final: pensa no dia e no mês que a gente começou, Bombom. 😉");
       } else if (newAttempts >= 2) {
-        setErrorMsg(
-          "> pista: são 4 números que marcam o início de tudo...",
-        );
+        setErrorMsg("> pista: são 4 números que marcam o início de tudo...");
       } else {
-        setErrorMsg(
-          "> combinação incorreta. o que esses números significam pra nós?",
-        );
+        setErrorMsg("> combinação incorreta. o que esses números significam pra nós?");
       }
 
       setTimeout(() => setShaking(false), 600);
@@ -215,10 +204,8 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
               width: "100%",
               height: "100%",
               border: "3px solid var(--neon-cyan)",
-              boxShadow:
-                "0 0 20px var(--neon-cyan), inset 0 0 20px oklch(0.86 0.19 200 / 0.1)",
-              background:
-                "radial-gradient(circle, oklch(0.15 0 0) 40%, oklch(0.08 0 0) 100%)",
+              boxShadow: "0 0 20px var(--neon-cyan), inset 0 0 20px oklch(0.86 0.19 200 / 0.1)",
+              background: "radial-gradient(circle, oklch(0.15 0 0) 40%, oklch(0.08 0 0) 100%)",
             }}
           />
 
@@ -332,8 +319,8 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
         <>
           <CyberTextBox accent="pink">
             <p className="text-[var(--neon-pink)] leading-relaxed">
-              &gt; cofre aberto! dentro havia o que eu mais protejo no mundo: o
-              meu coração e agora ele está aos seus cuidados. guarde a sete chaves e mantenha com você para sempre! ❤
+              &gt; cofre aberto! dentro havia o que eu mais protejo no mundo: o meu coração e agora
+              ele está aos seus cuidados. guarde a sete chaves e mantenha com você para sempre! ❤
             </p>
           </CyberTextBox>
           <NeonButton

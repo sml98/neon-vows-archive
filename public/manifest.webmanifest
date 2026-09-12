@@ -1,0 +1,20 @@
+{
+  "name": "Neon Vows — Samuel & Camila",
+  "short_name": "Neon Vows",
+  "description": "Uma aventura romântica em 16 fases, feita de memórias, enigmas e amor.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#130720",
+  "theme_color": "#e83cae",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

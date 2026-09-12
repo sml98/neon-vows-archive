@@ -27,7 +27,14 @@ function HeartExplosion() {
     if (!ctx) return;
 
     let animationId: number;
-    const particles: { x: number; y: number; size: number; speedY: number; speedX: number; opacity: number }[] = [];
+    const particles: {
+      x: number;
+      y: number;
+      size: number;
+      speedY: number;
+      speedX: number;
+      opacity: number;
+    }[] = [];
 
     // Resize canvas
     canvas.width = canvas.parentElement?.clientWidth || 300;

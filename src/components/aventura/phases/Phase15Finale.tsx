@@ -8,6 +8,7 @@ import { useTypewriter } from "@/lib/aventura/useTypewriter";
 import coupleNight from "@/assets/couple-night.png.asset.json";
 import coupleSmile from "@/assets/couple-smile.png.asset.json";
 import coupleForest from "@/assets/couple-forest.jpg";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 const IMAGES = [
   { url: coupleForest, label: "Aventura ao ar livre 🌿" },
@@ -21,6 +22,7 @@ function HeartFireworks() {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
@@ -161,6 +163,7 @@ function HeartFireworks() {
 
 function ImageSlideshow() {
   const [idx, setIdx] = useState(0);
+  const [failedImages, setFailedImages] = useState<number[]>([]);
 
   const next = () => {
     setIdx((i) => (i + 1) % IMAGES.length);
@@ -173,12 +176,27 @@ function ImageSlideshow() {
   return (
     <div className="relative w-full border-2 border-[var(--neon-cyan)] shadow-[var(--shadow-neon-cyan)] overflow-hidden animate-glitch-fade flex flex-col z-10">
       <div className="relative aspect-video w-full overflow-hidden bg-black">
-        <img
-          src={IMAGES[idx].url}
-          alt={IMAGES[idx].label}
-          className="block w-full h-full object-cover transition-all duration-300"
-          style={{ imageRendering: "pixelated" }}
-        />
+        {failedImages.includes(idx) ? (
+          <div
+            role="img"
+            aria-label={`${IMAGES[idx].label}. Foto indisponível.`}
+            className="grid h-full w-full place-items-center bg-[radial-gradient(circle_at_center,oklch(0.25_0.12_330),oklch(0.08_0.03_290))] p-8 text-center"
+          >
+            <span className="font-display text-xs leading-relaxed neon-text-pink">
+              MEMÓRIA VISUAL
+              <br />
+              TEMPORARIAMENTE OFFLINE
+            </span>
+          </div>
+        ) : (
+          <img
+            src={IMAGES[idx].url}
+            alt={IMAGES[idx].label}
+            className="block h-full w-full object-cover transition-all duration-300"
+            style={{ imageRendering: "pixelated" }}
+            onError={() => setFailedImages((current) => [...new Set([...current, idx])])}
+          />
+        )}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10"
@@ -222,7 +240,7 @@ function LoveCountdown() {
   const [elapsed, setElapsed] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    const startDate = new Date(2025, 9, 9); // Oct 9, 2025 (months are 0-indexed, so 9 is October)
+    const startDate = new Date(EXPERIENCE.relationship.startDate);
     const tick = () => {
       const now = new Date();
       const diff = now.getTime() - startDate.getTime();
@@ -239,25 +257,47 @@ function LoveCountdown() {
 
   return (
     <div className="w-full border-2 border-[var(--neon-cyan)] bg-black/90 p-4 text-center font-display shadow-[var(--shadow-neon-cyan)] z-10 animate-glitch-fade">
-      <div className="text-[9px] text-[var(--neon-cyan)] tracking-widest mb-2 font-display">TEMPO DE COOP COMPARTILHADO:</div>
+      <div className="text-[9px] text-[var(--neon-cyan)] tracking-widest mb-2 font-display">
+        TEMPO DE COOP COMPARTILHADO:
+      </div>
       <div className="flex justify-center gap-3 text-[var(--neon-pink)]">
         <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{elapsed.days}</span>
+          <span
+            className="text-2xl sm:text-3xl font-bold font-display"
+            style={{ textShadow: "0 0 10px var(--neon-pink)" }}
+          >
+            {elapsed.days}
+          </span>
           <span className="text-[8px] text-[var(--neon-cyan)] font-display">DIAS</span>
         </div>
         <span className="text-2xl neon-text-cyan self-start font-display">:</span>
         <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.hours).padStart(2, '0')}</span>
+          <span
+            className="text-2xl sm:text-3xl font-bold font-display"
+            style={{ textShadow: "0 0 10px var(--neon-pink)" }}
+          >
+            {String(elapsed.hours).padStart(2, "0")}
+          </span>
           <span className="text-[8px] text-[var(--neon-cyan)] font-display">HORAS</span>
         </div>
         <span className="text-2xl neon-text-cyan self-start font-display">:</span>
         <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.minutes).padStart(2, '0')}</span>
+          <span
+            className="text-2xl sm:text-3xl font-bold font-display"
+            style={{ textShadow: "0 0 10px var(--neon-pink)" }}
+          >
+            {String(elapsed.minutes).padStart(2, "0")}
+          </span>
           <span className="text-[8px] text-[var(--neon-cyan)] font-display">MIN</span>
         </div>
         <span className="text-2xl neon-text-cyan self-start font-display">:</span>
         <div className="flex flex-col items-center">
-          <span className="text-2xl sm:text-3xl font-bold font-display" style={{ textShadow: '0 0 10px var(--neon-pink)' }}>{String(elapsed.seconds).padStart(2, '0')}</span>
+          <span
+            className="text-2xl sm:text-3xl font-bold font-display"
+            style={{ textShadow: "0 0 10px var(--neon-pink)" }}
+          >
+            {String(elapsed.seconds).padStart(2, "0")}
+          </span>
           <span className="text-[8px] text-[var(--neon-cyan)] font-display">SEG</span>
         </div>
       </div>
@@ -284,21 +324,35 @@ function ArcadeTicket() {
       </div>
 
       <div className="flex flex-col gap-2 text-left text-[9px] tracking-wide my-4 font-mono">
-        <div><span className="text-[var(--neon-pink)]">PLAYER 1:</span> SAMUEL</div>
-        <div><span className="text-[var(--neon-pink)]">PLAYER 2:</span> CAMILA</div>
-        <div><span className="text-[var(--neon-pink)]">JORNADA:</span> CO-OP VITALÍCIA</div>
-        <div><span className="text-[var(--neon-pink)]">STATUS:</span> AMOR INFINITO HABILITADO</div>
-        <div><span className="text-[var(--neon-pink)]">EASTER EGGS:</span> ENCONTRO NO SHOPPING DESBLOQUEADO</div>
+        <div>
+          <span className="text-[var(--neon-pink)]">PLAYER 1:</span>{" "}
+          {EXPERIENCE.playerOne.name.toUpperCase()}
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">PLAYER 2:</span>{" "}
+          {EXPERIENCE.playerTwo.name.toUpperCase()}
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">JORNADA:</span> {EXPERIENCE.finale.promise}
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">STATUS:</span> AMOR INFINITO HABILITADO
+        </div>
+        <div>
+          <span className="text-[var(--neon-pink)]">EASTER EGGS:</span> ENCONTRO NO SHOPPING
+          DESBLOQUEADO
+        </div>
       </div>
 
       <div className="border-t border-[var(--neon-pink)] pt-4 mt-4">
         <div className="h-8 flex items-center justify-center gap-[2px] opacity-75">
-          {[1,3,2,1,4,2,1,3,2,4,1,2,3,1,2,4,1,3,2,1,4].map((w, idx) => (
+          {[1, 3, 2, 1, 4, 2, 1, 3, 2, 4, 1, 2, 3, 1, 2, 4, 1, 3, 2, 1, 4].map((w, idx) => (
             <div key={idx} className="bg-[var(--neon-cyan)] h-full" style={{ width: `${w}px` }} />
           ))}
         </div>
         <div className="text-[8px] text-[var(--neon-cyan)] mt-1 font-mono">
-          * CAMILA-E-SAMUEL-PARA-SEMPRE *
+          * {EXPERIENCE.playerTwo.name.toUpperCase()}-E-
+          {EXPERIENCE.playerOne.name.toUpperCase()}-PARA-SEMPRE *
         </div>
       </div>
 
@@ -319,7 +373,7 @@ interface Props {
 
 export function Phase15Finale({ achievements }: Props) {
   const [revealed, setRevealed] = useState(false);
-  const { output, done } = useTypewriter(POEM, 42);
+  const { output, done, skip } = useTypewriter(POEM, 42);
 
   return (
     <div className="w-full flex flex-col items-center gap-4">
@@ -335,6 +389,16 @@ export function Phase15Finale({ achievements }: Props) {
           {!done && <Caret color="cyan" />}
         </p>
       </CyberTextBox>
+
+      {!done && (
+        <button
+          type="button"
+          onClick={skip}
+          className="min-h-9 font-display text-[8px] text-white/55 underline underline-offset-4 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--neon-cyan)]"
+        >
+          [ EXIBIR TEXTO COMPLETO ]
+        </button>
+      )}
 
       {done && !revealed && (
         <NeonButton variant="pink" onClick={() => setRevealed(true)}>
@@ -352,7 +416,8 @@ export function Phase15Finale({ achievements }: Props) {
               &gt; nenhuma engine renderiza algo tão perfeito quanto você ao meu lado.
               <br />
               <br />
-              &gt; obrigado por atravessar cada fase comigo. te amo em todos os pixels, em todos os frames, em todos os finais possíveis. <Caret color="pink" />
+              &gt; obrigado por atravessar cada fase comigo. te amo em todos os pixels, em todos os
+              frames, em todos os finais possíveis. <Caret color="pink" />
             </p>
           </CyberTextBox>
 
