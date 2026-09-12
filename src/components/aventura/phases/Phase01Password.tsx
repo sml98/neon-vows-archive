@@ -9,11 +9,12 @@ import { EXPERIENCE } from "@/lib/aventura/experience";
 interface Props {
   onSolved: () => void;
   onBeep: (kind: "click" | "error" | "success") => void;
+  gift?: "chocolate" | "flor" | "both" | null;
 }
 
 const MAX_HP = 3;
 
-export function Phase01Password({ onSolved, onBeep }: Props) {
+export function Phase01Password({ onSolved, onBeep, gift }: Props) {
   const [value, setValue] = useState("");
   const [hp, setHp] = useState(MAX_HP);
   const [errors, setErrors] = useState(0);
@@ -63,6 +64,13 @@ export function Phase01Password({ onSolved, onBeep }: Props) {
           <br />
           &gt; detectando presença... {EXPERIENCE.playerTwo.nickname} identificada.
           <br />
+          {(gift === "chocolate" || gift === "both") && (
+            <>
+              &gt; artefato físico detectado: chocolate vinculado à {EXPERIENCE.gift.favoriteFruit},
+              sua fruta preferida.
+              <br />
+            </>
+          )}
           &gt; aviso: este terminal contém uma mensagem classificada.
           <br />
           &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.

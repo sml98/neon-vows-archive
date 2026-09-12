@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 interface Props {
   onNext: () => void;
@@ -19,8 +20,7 @@ const PAIRS: { emoji: string; label: string; matchMsg: string }[] = [
   {
     emoji: "🍫",
     label: "Chocolate",
-    matchMsg:
-      "> Doce e irresistível, assim como tu! (mas tem que ser chocolate preto, pois sei que odeia o branco kkk)",
+    matchMsg: `> não foi um chocolate qualquer: a ${EXPERIENCE.gift.favoriteFruit}, tua fruta preferida, virou a chave desta aventura.`,
   },
   { emoji: "🌹", label: "Flor", matchMsg: "> cada pétala é uma promessa que te fiz." },
   { emoji: "☕", label: "Café", matchMsg: "> aquele primeiro café na praça de alimentação..." },
@@ -37,7 +37,12 @@ const PAIRS: { emoji: string; label: string; matchMsg: string }[] = [
     matchMsg:
       "> independente do prato, é sempre um momento especial partilhar do momento de lanche com ela, independente do dia.",
   },
-  { emoji: "🍿", label: "Pipoca", matchMsg: "> acompanhante oficial das nossas maratonas." },
+  {
+    emoji: "🍒",
+    label: "Cereja",
+    matchMsg:
+      "> uma preferência pequena para quem não presta atenção; uma pista enorme para quem ama.",
+  },
 ];
 
 function shuffle<T>(arr: T[]): T[] {

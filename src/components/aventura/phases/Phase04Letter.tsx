@@ -17,9 +17,11 @@ Então chegou o shopping. Você apareceu com um copinho de café nas mãos e eu 
 
 Eu só queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink} numa tarde de semana. Você achou uma loucura e chegou a desconfiar que eu fosse alcoólatra. No fim, bebeu comigo. Essa parte ainda me faz rir: você questiona a minha maluquice e, quando eu vejo, já está dividindo ela comigo.
 
+Eu fiquei receoso de tentar te beijar. Mas tomei coragem, você permitiu, correspondeu e me beijou de volta. Naquele instante, a discussão, o orgulho e o medo perderam a conexão. Ficou só aquela sensação boa entre nós.
+
 Depois você voltou de Uber e eu fui a pé para o apartamento. Eu não estava acostumado a caminhar e cheguei a ganhar calos nos pés. Foi o primeiro dano físico oficialmente causado por me apaixonar por você — e eu repetiria todo o caminho.
 
-Cada dia contigo é uma fase nova que eu não quero pular. Cada beijo é um save point. E essa aventura? É só pra te lembrar que eu pensei em cada detalhe, como eu penso em você cada segundo.
+Nós nos despedimos felizes. E cada dia contigo desde então é uma fase que eu não quero pular. Cada beijo é um save point. Esta aventura é só para te lembrar que eu guardei os detalhes — inclusive os que parecem pequenos demais para qualquer outra pessoa.
 
 Te amo, minha vida. Agora continua — ainda tem surpresa.
 — ${EXPERIENCE.playerOne.name}`;

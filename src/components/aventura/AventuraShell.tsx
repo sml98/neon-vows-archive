@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CatSprites } from "./CatSprites";
 import { TOTAL_PHASES, type PhaseId } from "@/lib/aventura/useAventuraState";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 interface Props {
   children: ReactNode;
@@ -79,10 +80,10 @@ export function AventuraShell({
               {(gift === "chocolate" || gift === "both") && (
                 <div className="group relative flex items-center gap-1 cursor-help hover:text-white transition-colors py-0.5">
                   <span>🍫</span>
-                  <span className="truncate">Chocolate Especial</span>
+                  <span className="truncate">{EXPERIENCE.gift.itemName}</span>
                   {/* Tooltip */}
                   <div className="absolute top-full left-0 mt-1 w-48 p-2 bg-black border border-[var(--neon-cyan)] text-[9px] leading-relaxed text-white rounded shadow-lg pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity z-50 normal-case font-terminal">
-                    Garante doçura infinita e recarrega 100% de energia de amor.
+                    {EXPERIENCE.gift.meaning}
                   </div>
                 </div>
               )}

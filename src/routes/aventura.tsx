@@ -89,7 +89,9 @@ function AventuraPage() {
       onPhaseSelect={goTo}
     >
       <PhaseTransition keyId={phase}>
-        {phase === 1 && <Phase01Password onSolved={() => advance(1, 2)} onBeep={beep} />}
+        {phase === 1 && (
+          <Phase01Password onSolved={() => advance(1, 2)} onBeep={beep} gift={gift} />
+        )}
         {phase === 2 && <Phase02Chocolate onNext={() => advance(2, 3)} onBeep={beep} />}
         {phase === 3 && <Phase03Pact onNext={() => advance(3, 4)} onBeep={beep} gift={gift} />}
         {phase === 4 && <Phase04Letter onNext={() => advance(4, 5)} onBeep={beep} />}

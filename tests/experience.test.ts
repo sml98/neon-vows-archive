@@ -8,6 +8,8 @@ test("a configuração principal contém uma história consistente", () => {
   assert.equal(EXPERIENCE.playerOne.name, "Samuel");
   assert.equal(EXPERIENCE.playerTwo.name, "Camila");
   assert.equal(EXPERIENCE.finale.emotionalDirection, "rir-e-se-emocionar");
+  assert.equal(EXPERIENCE.gift.favoriteFruit, "cereja");
+  assert.equal(EXPERIENCE.playerTwo.callsPartner.includes("vida"), true);
   assert.equal(EXPERIENCE.relationship.originStory.length, 5);
   assert.equal(Number.isNaN(new Date(EXPERIENCE.relationship.startDate).getTime()), false);
 });

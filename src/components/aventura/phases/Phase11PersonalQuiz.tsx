@@ -80,6 +80,29 @@ const QUESTIONS: Question[] = [
       },
     ],
   },
+  {
+    id: 4,
+    text: "Se o carinho às vezes não consegue virar palavra ou gesto, o que eu quero que você saiba? 💜",
+    options: [
+      {
+        label: "Que o sistema precisa ser formatado",
+        correct: false,
+        response: "> Nem pensar. Você não é um problema para eu consertar, vida.",
+      },
+      {
+        label: "Que eu quero aprender o seu jeito, sem cobrar uma reação perfeita",
+        correct: true,
+        response:
+          "> É isso. Eu não fiz esta aventura para cobrar carinho; fiz para mostrar que continuo prestando atenção e escolhendo caminhar com você.",
+      },
+      {
+        label: "Que existe uma resposta obrigatória",
+        correct: false,
+        response:
+          "> Aqui não tem prova final de sentimentos. Só verdade, paciência e espaço para nós dois.",
+      },
+    ],
+  },
 ];
 
 export function Phase11PersonalQuiz({ onNext, onBeep }: Props) {

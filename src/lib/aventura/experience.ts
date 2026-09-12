@@ -9,10 +9,19 @@ export const EXPERIENCE = {
   playerOne: {
     name: "Samuel",
     nickname: "Samuka",
+    callsPartner: ["vida", "Bombom", "meu amor", "chocolate"],
   },
   playerTwo: {
     name: "Camila",
     nickname: "Bombom",
+    callsPartner: ["vida"],
+  },
+  gift: {
+    accessParam: "chocolate",
+    itemName: "Chocolate + Cereja",
+    favoriteFruit: "cereja",
+    meaning:
+      "Um chocolate escolhido por carregar a cereja, a fruta preferida da Camila, e esconder a entrada para esta aventura.",
   },
   relationship: {
     startDate: "2025-10-09T00:00:00-03:00",
@@ -27,18 +36,37 @@ export const EXPERIENCE = {
       camilaRideHome: "Uber",
       samuelRideHome: "a pé até o apartamento",
       funnyAftermath: "calos nos pés",
+      firstKiss: {
+        happenedThatDay: true,
+        detail:
+          "Eu estava receoso de tentar; quando tomei coragem, ela permitiu, correspondeu e me beijou de volta.",
+      },
+      farewellFeeling: "felicidade e aquela sensação boa de que algo especial tinha começado",
     },
     originStory: [
       "Nos conhecemos por um aplicativo de relacionamentos ligado ao Facebook.",
       "Discutimos antes mesmo de nos vermos e paramos de conversar.",
-      "Eu encontrei o Instagram dela e respondi a um story.",
-      "Voltamos a conversar, discutimos outra vez e ainda assim marcamos o encontro.",
-      "Nos vimos pela primeira vez na praça de alimentação do shopping.",
+      "Eu respondi a um story no Instagram; voltamos a conversar e ainda discutimos outra vez.",
+      "Nos encontramos no shopping: ela com café, eu querendo chopp numa tarde de semana.",
+      "Eu arrisquei o primeiro beijo, ela correspondeu e nos despedimos felizes.",
     ],
+    emotionalContext: {
+      camila:
+        "Nem sempre consegue demonstrar carinho com facilidade por causa de experiências difíceis que viveu.",
+      samuel:
+        "Está tentando compreender o jeito dela e quer reacender a conexão do início sem transformar isso em cobrança.",
+    },
   },
   finale: {
     emotionalDirection: "rir-e-se-emocionar",
     promise: "CO-OP VITALÍCIA",
+    message: `Camila, eu sei que carinho nem sempre consegue sair em forma de palavra, abraço ou gesto. Sei que existem partes da sua história que tornaram isso mais difícil — e esta aventura não foi feita para cobrar de você uma reação perfeita.
+
+Ela foi feita para dizer que eu presto atenção. No café entre as suas mãos. No beijo que você correspondeu quando eu ainda estava com medo. No seu jeito de me chamar de vida. Até nas nossas discussões antes de a história começar direito.
+
+Durante todo este tempo eu tenho tentado aprender o seu jeito de amar. Talvez eu erre, talvez a gente se desencontre e precise apertar CONTINUE algumas vezes. Mas eu ainda quero encontrar, junto com você, aquela felicidade boa da nossa primeira despedida.
+
+Não quero voltar no tempo. Quero levar aquela chama para o que ainda podemos construir. Você não precisa dizer tudo agora. Só quero que saiba: eu continuo aqui, vida — escolhendo você com mais consciência do que no primeiro dia.`,
   },
 } as const;
 

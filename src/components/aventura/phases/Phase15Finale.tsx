@@ -412,12 +412,9 @@ export function Phase15Finale({ achievements }: Props) {
           <ImageSlideshow />
 
           <CyberTextBox accent="pink">
-            <p className="text-[var(--neon-pink)] text-xs sm:text-sm leading-relaxed font-terminal">
-              &gt; nenhuma engine renderiza algo tão perfeito quanto você ao meu lado.
-              <br />
-              <br />
-              &gt; obrigado por atravessar cada fase comigo. te amo em todos os pixels, em todos os
-              frames, em todos os finais possíveis. <Caret color="pink" />
+            <p className="whitespace-pre-line text-left font-terminal text-sm leading-relaxed text-[var(--neon-pink)] sm:text-base">
+              {EXPERIENCE.finale.message}
+              <Caret color="pink" />
             </p>
           </CyberTextBox>
 

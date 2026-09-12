@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { CyberTextBox } from "../CyberTextBox";
 import { NeonButton } from "../NeonButton";
+import { EXPERIENCE } from "@/lib/aventura/experience";
 
 type Choice = "aceitar" | "clausulas" | "negociar";
 
@@ -27,10 +28,10 @@ export function Phase03Pact({ onNext, onBeep, gift }: Props) {
         if (gift === "flor") {
           return "> Contrato assinado! A flor foi registrada como Item Lendário de proteção. Seu amor eterno foi salvo na nuvem com sucesso! ❤";
         }
-        return "> Licença aceita! O chocolate físico foi catalogado como Poção de Cura +100% HP. Juntos somos invencíveis. ❤";
+        return `> Licença aceita! O chocolate físico trouxe a chave secreta: ${EXPERIENCE.gift.favoriteFruit}, sua fruta preferida. Poção de Cura +100% HP catalogada. ❤`;
 
       case "clausulas":
-        return "> CLÁUSULA EXTRA DEBEIJOS DETECTADA: Fica estabelecida a cobrança diária de no mínimo 10 beijos na testa e cafuné ilimitado. Easter egg desbloqueado! (Você aceitou sem ler kkk). ❤";
+        return "> CLÁUSULA EXTRA DE BEIJOS DETECTADA: Fica estabelecida a cobrança diária de no mínimo 10 beijos na testa e cafuné ilimitado. Easter egg desbloqueado! (Você aceitou sem ler kkk). ❤";
 
       case "negociar":
         return "> NEGOCIAÇÃO INICIADA: Você tenta barganhar mais cafuné e eu aceito imediatamente (sem surpresas aqui, você sempre ganha as negociações kkk). ❤";
@@ -66,8 +67,8 @@ export function Phase03Pact({ onNext, onBeep, gift }: Props) {
         {(gift === "chocolate" || gift === "both" || !gift) && (
           <p className="mb-2">
             <span className="text-[var(--neon-pink)] font-bold">CLÁUSULA 2:</span> O chocolate
-            físico recebido concede Buff de Felicidade de +100% quando consumido em dupla (não vale
-            comer tudo sozinha, hein? kkk).
+            físico recebido concede Buff de Felicidade de +100%. A cereja não está ali por acaso: é
+            a fruta preferida da Player 2 e a pista que conecta o presente a esta aventura.
           </p>
         )}
         {(gift === "flor" || gift === "both" || !gift) && (
