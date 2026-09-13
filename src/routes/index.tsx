@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { readSavedProgress, TOTAL_PHASES } from "@/lib/aventura/useAventuraState";
 import { PLAYER_LABEL } from "@/lib/aventura/experience";
+import { PixelParty } from "@/components/aventura/PixelParty";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -37,14 +38,16 @@ function Index() {
         style={{ boxShadow: "var(--shadow-neon-pink)" }}
       >
         <p className="mb-4 font-display text-[8px] tracking-[0.28em] text-[var(--neon-cyan)]">
-          {PLAYER_LABEL} // CO-OP STORY
+          {PLAYER_LABEL} // RPG CO-OP
         </p>
         <h1 className="animate-title-glitch mb-3 font-display text-xl leading-relaxed neon-text-pink sm:text-2xl">
           NEON VOWS
         </h1>
-        <p className="mb-6 text-xl leading-snug text-white/90 sm:text-2xl">
-          Uma história que só dois jogadores conseguem completar.
+        <p className="mb-5 text-xl leading-snug text-white/90 sm:text-2xl">
+          Uma campanha romântica para dois jogadores.
         </p>
+
+        <PixelParty />
 
         <div className="mb-6 grid grid-cols-3 gap-2 font-display text-[8px] text-[var(--neon-cyan)] sm:text-[9px]">
           <div className="border border-[var(--neon-cyan)]/60 bg-black/60 px-2 py-3">
@@ -64,7 +67,7 @@ function Index() {
         <p className="mb-6 min-h-12 text-base leading-relaxed text-[var(--neon-cyan)]">
           {hasProgress
             ? `> save encontrado na fase ${String(savedPhase).padStart(2, "0")}. A jornada continua de onde você parou.`
-            : "> memórias, escolhas e sinais escondidos aguardam a Player 2."}
+            : "> memórias, escolhas e piadas internas aguardam a Player 2."}
         </p>
 
         <Link

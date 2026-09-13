@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { CatSprites } from "./CatSprites";
+import { PixelParty } from "./PixelParty";
 import { TOTAL_PHASES, type PhaseId } from "@/lib/aventura/useAventuraState";
 import { EXPERIENCE } from "@/lib/aventura/experience";
 
@@ -164,6 +165,7 @@ export function AventuraShell({
             </label>
           )}
         </div>
+        <PixelParty compact />
         <CatSprites />
         {children}
       </main>
