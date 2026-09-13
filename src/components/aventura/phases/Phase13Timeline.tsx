@@ -11,7 +11,7 @@ interface Props {
 interface TimelineEvent {
   id: number;
   text: string;
-  order: number;
+  order: number; // Correct position (1 to 5)
 }
 
 const EVENTS: TimelineEvent[] = [
@@ -38,9 +38,13 @@ function shuffle<T extends { order: number }>(arr: T[]): T[] {
 
 export function Phase13Timeline({ onNext, onBeep }: Props) {
   const [pool, setPool] = useState<TimelineEvent[]>(() => shuffle(EVENTS));
-  const [timeline, setTimeline] = useState<(TimelineEvent | null)[]>(() =>
-    Array(EVENTS.length).fill(null),
-  );
+  const [timeline, setTimeline] = useState<(TimelineEvent | null)[]>([
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]);
   const [isSuccess, setIsSuccess] = useState(false);
   const [flashError, setFlashError] = useState(false);
 
@@ -106,7 +110,7 @@ export function Phase13Timeline({ onNext, onBeep }: Props) {
       setTimeout(() => {
         // Reset everything back to pool
         setPool(shuffle(EVENTS));
-        setTimeline(Array(EVENTS.length).fill(null));
+        setTimeline([null, null, null, null, null]);
         setFlashError(false);
       }, 1500);
     }
