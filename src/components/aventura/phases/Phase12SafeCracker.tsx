@@ -163,7 +163,7 @@ export function Phase12SafeCracker({ onNext, onBeep }: Props) {
 
       <CyberTextBox accent="cyan">
         <p className="text-left font-terminal text-xs sm:text-sm">
-          &gt; Esse cofre guarda o meu segredo mais bem protegido.
+          &gt; Esse cofre guarda uma das lembranças mais importantes da nossa campanha.
           <br />
           &gt; Decifre a chave temporal de 4 dígitos [A][B][C][D]:
           <br />

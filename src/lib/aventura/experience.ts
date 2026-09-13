@@ -21,7 +21,7 @@ export const EXPERIENCE = {
     itemName: "Chocolate + Cereja",
     favoriteFruit: "cereja",
     meaning:
-      "Um chocolate escolhido por trazer cereja, a fruta preferida da Camila, e por guardar a entrada desta aventura.",
+      "Um chocolate escolhido por carregar a cereja, a fruta preferida da Camila, e esconder a entrada para esta aventura.",
   },
   relationship: {
     startDate: "2025-10-09T00:00:00-03:00",
@@ -29,7 +29,7 @@ export const EXPERIENCE = {
     startDateFull: "09/10/2025",
     firstMeeting: {
       place: "praça de alimentação do shopping",
-      monthAndYear: "outubro de 2025",
+      timing: "alguns dias antes do pedido oficial de namoro, em outubro de 2025",
       samuelDrink: "chopp de vinho",
       camilaDrink: "café",
       camilaArrivalDetail: "um copinho de café nas mãos",
@@ -43,12 +43,22 @@ export const EXPERIENCE = {
       },
       farewellFeeling: "felicidade e aquela sensação boa de que algo especial tinha começado",
     },
+    officialProposal: {
+      date: "09/10/2025",
+      place: "um motel",
+      gifts: ["buquê de flores", "aliança"],
+      feeling:
+        "Foi romântico, divertido e muito bom, embora o ambiente fosse estranho e diferente para mim.",
+      comicRelief:
+        "Porque aparentemente restaurante, praça e pôr do sol estavam em manutenção naquele dia.",
+    },
     originStory: [
       "Nos conhecemos por um aplicativo de relacionamentos ligado ao Facebook.",
       "Discutimos antes mesmo de nos vermos e paramos de conversar.",
       "Eu respondi a um story no Instagram; voltamos a conversar e ainda discutimos outra vez.",
       "Nos encontramos no shopping: ela com café, eu querendo chopp numa tarde de semana.",
       "Eu arrisquei o primeiro beijo, ela correspondeu e nos despedimos felizes.",
+      "Em 09/10/2025 veio o pedido oficial: buquê, aliança e, por alguma decisão memorável do roteiro, um motel.",
     ],
     emotionalContext: {
       camila:
@@ -58,15 +68,15 @@ export const EXPERIENCE = {
     },
   },
   finale: {
-    emotionalDirection: "rir-e-se-emocionar",
-    promise: "CO-OP VITALÍCIA",
-    message: `Camila, eu sei que nem sempre é fácil transformar carinho em palavra, abraço ou gesto. Sei também que algumas partes da sua história tornaram isso ainda mais difícil. Por isso, esta aventura nunca foi sobre esperar de você uma reação perfeita.
+    emotionalDirection: "diversao-romantica-descontraida",
+    promise: "NOSSA CAMPANHA CONTINUA",
+    message: `Camila, esta aventura é um passeio divertido pelas pequenas coisas que fizeram a nossa história ter a nossa cara.
 
-Ela existe para mostrar que eu presto atenção: no café entre as suas mãos, no beijo que você correspondeu quando eu ainda estava com medo, no seu jeito de me chamar de vida e até nas nossas discussões antes de a história começar de verdade.
+O café nas suas mãos. O chopp suspeito numa tarde de semana. O beijo que eu quase não tive coragem de tentar. O Uber que te levou embora enquanto meus pés desbloqueavam o troféu “calos por paixão”. E, claro, o pedido oficial com buquê, aliança e um motel — porque aparentemente os lugares convencionais estavam todos em manutenção.
 
-Durante todo este tempo, tenho aprendido a reconhecer o seu jeito de amar. Talvez eu erre. Talvez a gente se desencontre e precise apertar CONTINUE algumas vezes. Mesmo assim, ainda quero reencontrar com você aquela felicidade tranquila da nossa primeira despedida.
+Eu gosto de lembrar que a gente começou discutindo antes mesmo de se conhecer e, ainda assim, encontrou um jeito de chegar até aqui. Nós não somos um romance escrito por um roteirista comportado. Somos vida, Bombom, meu amor, chocolate, teimosia, risadas e um monte de fases jogadas do nosso jeito.
 
-Não quero voltar no tempo. Quero trazer aquela chama para tudo o que ainda podemos construir. Você não precisa dizer tudo agora. Só quero que saiba: eu continuo aqui, vida — escolhendo você hoje com ainda mais certeza do que no primeiro dia.`,
+Se esta aventura arrancou um sorriso seu e fez você lembrar de algum desses momentos com carinho, missão cumprida. Eu só queria brincar com a nossa história e dizer, do meu jeito meio nerd: gosto demais de dividir essa campanha contigo, vida.`,
   },
 } as const;
 

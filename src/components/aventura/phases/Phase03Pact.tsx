@@ -28,13 +28,13 @@ export function Phase03Pact({ onNext, onBeep, gift }: Props) {
         if (gift === "flor") {
           return "> Contrato assinado! A flor foi registrada como Item Lendário de proteção. Seu amor eterno foi salvo na nuvem com sucesso! ❤";
         }
-        return `> Licença aceita! O chocolate físico trouxe a chave secreta: ${EXPERIENCE.gift.favoriteFruit}, sua fruta preferida. Poção de Cura +100% HP catalogada. ❤`;
+        return `> Licença aceita! O chocolate físico já entrega um detalhe certeiro: ${EXPERIENCE.gift.favoriteFruit}, sua fruta preferida. Poção de Cura +100% HP catalogada. ❤`;
 
       case "clausulas":
         return "> CLÁUSULA EXTRA DE BEIJOS DETECTADA: Fica estabelecida a cobrança diária de no mínimo 10 beijos na testa e cafuné ilimitado. Easter egg desbloqueado! (Você aceitou sem ler kkk). ❤";
 
       case "negociar":
-        return "> NEGOCIAÇÃO INICIADA: Você tenta barganhar mais cafuné e eu aceito imediatamente (sem surpresas aqui, você sempre ganha as negociações kkk). ❤";
+        return "> NEGOCIAÇÃO INICIADA: Você tenta barganhar mais cafuné e eu aceito imediatamente — como sempre, você ganha essa discussão kkk. ❤";
     }
   };
 

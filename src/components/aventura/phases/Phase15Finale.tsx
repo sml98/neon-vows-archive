@@ -402,7 +402,7 @@ export function Phase15Finale({ achievements }: Props) {
 
       {done && !revealed && (
         <NeonButton variant="pink" onClick={() => setRevealed(true)}>
-          [ ABRIR MEMÓRIA FINAL ]
+          [ ABRIR NOSSO ÁLBUM NEON ]
         </NeonButton>
       )}
 

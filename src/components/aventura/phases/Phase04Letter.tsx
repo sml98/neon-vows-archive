@@ -23,7 +23,9 @@ Depois, você voltou de Uber e eu fui a pé até o apartamento. Como não estava
 
 Nós nos despedimos felizes. Desde então, cada dia com você é uma fase que eu não quero pular, e cada beijo virou um save point. Fiz esta aventura para lembrar que guardei os detalhes — até aqueles que pareceriam pequenos demais para qualquer outra pessoa.
 
-Eu amo você, minha vida. Continue — a nossa história ainda guarda surpresas.
+Poucos dias depois chegou 09/10/2025, e eu resolvi oficializar o namoro com flores, aliança e... num motel. Porque aparentemente restaurante, praça e pôr do sol estavam em manutenção naquele dia. Eu, meio deslocado naquele ambiente, tentando agir naturalmente com um buquê e uma aliança: uma operação discretíssima, bah. Foi estranho, cômico, diferente, muito bom — e completamente nosso.
+
+Te amo, minha vida. Agora continua — ainda tem mais fases para rir comigo.
 — ${EXPERIENCE.playerOne.name}`;
 
 export function Phase04Letter({ onNext, onBeep }: Props) {

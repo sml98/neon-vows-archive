@@ -101,7 +101,7 @@ export function Phase06Quiz2({ onNext, onBeep }: Props) {
             <div className="space-y-2 text-[var(--neon-pink)] leading-relaxed text-sm text-left">
               <p>
                 &gt; MEMÓRIA DESBLOQUEADA: {EXPERIENCE.relationship.firstMeeting.place},{" "}
-                {EXPERIENCE.relationship.firstMeeting.monthAndYear}.
+                {EXPERIENCE.relationship.firstMeeting.timing}.
               </p>
               <p>
                 &gt; você chegou com {EXPERIENCE.relationship.firstMeeting.camilaArrivalDetail}. Eu

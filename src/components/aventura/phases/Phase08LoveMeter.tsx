@@ -115,7 +115,7 @@ export function Phase08LoveMeter({ onNext, onBeep }: Props) {
         <p>
           &gt; escolhe uma parte sua que você acha que eu mais amo.
           <br />
-          &gt; te conto um segredo depois. 👀
+          &gt; depois eu te conto qual foi a minha resposta. 👀
         </p>
       </CyberTextBox>
 

@@ -82,24 +82,23 @@ const QUESTIONS: Question[] = [
   },
   {
     id: 4,
-    text: "Se o carinho às vezes não consegue virar palavra ou gesto, o que eu quero que você saiba? 💜",
+    text: "Por que a cereja ganhou até espaço nesta aventura? 🍒",
     options: [
       {
-        label: "Que o sistema precisa ser formatado",
+        label: "Porque sobrou espaço no inventário",
         correct: false,
-        response: "> Nem pensar. Você não é um problema para eu consertar, vida.",
+        response: "> Negativo. Aqui nenhum detalhe entra só para preencher espaço, vida.",
       },
       {
-        label: "Que eu quero aprender o seu jeito, sem cobrar uma reação perfeita",
+        label: "Porque é minha fruta preferida e você prestou atenção",
         correct: true,
         response:
-          "> É isso. Eu não fiz esta aventura para cobrar carinho; fiz para mostrar que continuo prestando atenção e escolhendo caminhar com você.",
+          "> Acertou. Para muita gente é só uma fruta; para mim é uma prova pequena de que conhecer você está nos detalhes.",
       },
       {
-        label: "Que existe uma resposta obrigatória",
+        label: "Porque o sistema gosta de vermelho",
         correct: false,
-        response:
-          "> Aqui não tem prova final de sentimentos. Só verdade, paciência e espaço para nós dois.",
+        response: "> Até gosta, mas a resposta certa é bem mais Camila do que isso kkk.",
       },
     ],
   },

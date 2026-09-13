@@ -40,7 +40,9 @@ export function Phase01Password({ onSolved, onBeep, gift }: Props) {
     const ok = PASSWORD_ANSWERS.some((a) => normalize(a) === normalize(value));
     if (ok) {
       onBeep("success");
-      setMessage("> acesso liberado. Mas, para ser sincero, meu coração reconheceu você antes mesmo da senha. ❤");
+      setMessage(
+        "> acesso liberado. Mas, para ser sincero, meu coração reconheceu você antes mesmo da senha. ❤",
+      );
       window.setTimeout(onSolved, 3000);
     } else {
       const nextErrors = Math.min(MAX_HP, errors + 1);
@@ -71,7 +73,7 @@ export function Phase01Password({ onSolved, onBeep, gift }: Props) {
               <br />
             </>
           )}
-          &gt; aviso: este terminal guarda uma mensagem confidencial.
+          &gt; arquivo carregado: diversão romântica, memórias e algumas decisões questionáveis.
           <br />
           &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.
           <br />

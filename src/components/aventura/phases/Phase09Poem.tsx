@@ -132,7 +132,7 @@ export function Phase09Poem({ onNext, onBeep }: Props) {
             onNext();
           }}
         >
-          [ CARREGAR RECOMPENSA FINAL ]
+          [ CARREGAR ÚLTIMA MEMÓRIA ]
         </NeonButton>
       )}
     </div>

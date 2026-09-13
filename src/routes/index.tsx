@@ -73,7 +73,7 @@ function Index() {
           style={{ boxShadow: "var(--shadow-neon-cyan)" }}
         >
           {completed
-            ? "[ REVER FINAL ]"
+            ? "[ REVER NOSSA HISTÓRIA ]"
             : hasProgress
               ? "[ CONTINUAR JORNADA ]"
               : "[ INICIAR JORNADA ]"}
