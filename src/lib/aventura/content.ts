@@ -6,8 +6,8 @@ export const PASSWORD_ANSWERS = [
 ];
 
 export const PASSWORD_HINT_FRAGMENTS = [
-  "> pista 1/2: foi o dia em que te vi ao vivo pela primeira vez.",
-  "> pista 2/2: outubro estava começando, e eu, terminando de me apaixonar.",
+  "> pista 1/2: foi o dia em que meus olhos finalmente encontraram você fora da tela.",
+  "> pista 2/2: outubro estava só começando; a nossa história também.",
 ];
 
 export const MEETING_ANSWERS = [
@@ -19,43 +19,43 @@ export const MEETING_ANSWERS = [
 ];
 
 export const MEETING_CLUES = [
-  `> pista 1/3: estávamos rodeados de opções de comida na ${EXPERIENCE.relationship.firstMeeting.place}.`,
-  `> pista 2/3: tu chegou com ${EXPERIENCE.relationship.firstMeeting.camilaArrivalDetail}. Eu lembro como se fosse ontem.`,
-  `> pista 3/3: eu queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink}; você suspeitou até que eu fosse alcoólatra... e depois bebeu comigo. 😉`,
+  `> pista 1/3: havia comida por todos os lados na ${EXPERIENCE.relationship.firstMeeting.place}.`,
+  `> pista 2/3: você chegou com ${EXPERIENCE.relationship.firstMeeting.camilaArrivalDetail}. Essa imagem ficou guardada em mim.`,
+  `> pista 3/3: eu quis provar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink}; você desconfiou da minha sanidade... e acabou dividindo a loucura comigo.`,
 ];
 
 export type BodyPart = "cabelo" | "olhos" | "estilo" | "curvas" | "boca";
 
 export const BODY_PART_MESSAGES: Record<BodyPart, string> = {
-  boca: "> A sua boca... é nela que o tempo trava um bug delicioso e eu esqueço qual fase da vida estou jogando. Cada beijo é um save point do nosso futuro.",
+  boca: "> A sua boca... basta um beijo para o tempo travar e o resto do mundo perder o sinal. É o meu save point favorito.",
   olhos:
-    "> Os seus olhos... castanhos como um mapa secreto que só eu sei decifrar. Quando você me olha, meu sistema inteiro dá reboot no melhor sentido possível.",
+    "> Os seus olhos... castanhos, intensos e cheios de caminhos que eu ainda quero descobrir. Quando você me olha, meu sistema esquece qualquer outro comando.",
   cabelo:
-    "> O seu cabelo... é a armadilha mais linda desse jogo. Cada fio me puxa pra mais perto, e o seu cheiro é o cheat code do meu bom humor.",
+    "> O seu cabelo... a armadilha mais bonita desta aventura. Cada fio me chama para mais perto, e o seu cheiro desbloqueia o meu melhor sorriso.",
   estilo:
-    "> O seu estilo... é personagem principal em qualquer cenário. Você entra numa sala e o mundo inteiro vira NPC olhando pra você.",
+    "> O seu estilo... tem energia de protagonista. Você chega e, sem precisar dizer nada, muda todo o cenário ao redor.",
   curvas:
-    "> As suas curvas... são level design divino. Cada detalhe seu foi renderizado sob medida pras minhas mãos, e isso me deixa completamente sem HP.",
+    "> As suas curvas... parecem desenhadas para desconfigurar o meu juízo. Cada detalhe seu me deixa sem defesa — e sem vontade nenhuma de resistir.",
 };
 
 export const BODY_PART_TRUTH =
-  "> Mas a verdade real? Eu amo VOCÊ INTEIRA, Camila. Não existe parte favorita quando o pacote todo é obra-prima. Você é minha edição limitada, sem bugs, sem patch, sem substituto.";
+  "> Mas a resposta verdadeira é você inteira, Camila. Não existe detalhe favorito quando é o conjunto que faz o meu coração perder o compasso. Você é única — sem cópia, sem substituta e impossível de esquecer.";
 
 export const SAMUEL_SELF_OPTIONS: { id: string; label: string; msg: string }[] = [
   {
     id: "risada",
     label: "MINHA RISADA",
-    msg: "> respondeu certo! você ama quando eu rio bobo do nada. (eu também, quando você é o motivo.)",
+    msg: "> Acertou! Você gosta quando eu solto aquela risada boba — e eu gosto ainda mais quando você é o motivo.",
   },
   {
     id: "abraco",
     label: "MEU ABRAÇO",
-    msg: "> quase! meu abraço é o teu save point favorito, eu sei. mas eu apostaria em outra coisa...",
+    msg: "> Quase! Meu abraço pode até ser o seu save point, mas eu estava pensando em outra coisa...",
   },
   {
     id: "chatice",
     label: "MINHA CHATICE",
-    msg: "> kkkk mentira! você AMA quando eu sou insuportável de ciumento. confessa.",
+    msg: "> Essa resposta foi pura provocação, eu sei. Mas confessa: até a minha chatice já virou parte do pacote.",
   },
 ];
 
@@ -72,51 +72,51 @@ export const QUIZ1_OPTIONS: { id: string; label: string; correct?: boolean; msg?
   {
     id: "samuel",
     label: "SAMUEL",
-    msg: "> Ahh mentirosa kkk, eu sou o que mais aguento! Em muitas coisas se é que me entende hehehe",
+    msg: "> Ah, mentirosa! Eu aguento bem mais — e você sabe exatamente do que estou falando. kkk",
   },
   { id: "camila", label: "CAMILA", correct: true },
   {
     id: "gato",
     label: "O GATO",
-    msg: "> a gata é tu mesma! Sz",
+    msg: "> O gato não conta. A minha dorminhoca favorita continua sendo você. ❤",
   },
   {
     id: "ninguem",
     label: "NINGUÉM (VIMOS TUDO)",
-    msg: "> nossa, revisionismo histórico agora? kkk a Camila apaga antes dos créditos, sempre.",
+    msg: "> Tentativa ousada de reescrever a história. Mas você apaga antes dos créditos, Camila. kkk",
   },
 ];
 
 // Phase 07 — Sentence builder
 export const SENTENCE_WORDS = ["VOCÊ", "É", "MINHA", "FASE", "FAVORITA"] as const;
 export const SENTENCE_SUCCESS =
-  "> mensagem recomposta. e é verdade: você é a única fase que eu quero rejogar pra sempre.";
+  "> mensagem restaurada. E é verdade: você é a fase que eu escolheria viver de novo, sempre.";
 export const SENTENCE_ERROR =
-  "> hmm, os fragmentos não encaixam. tenta de novo — a ordem certa faz sentido no coração.";
+  "> os fragmentos ainda não se encaixaram. Respira e tenta outra vez — o coração conhece a ordem.";
 
 // Phase 08 — Love math
 export const LOVE_MATH_OPTIONS: { id: string; label: string; correct?: boolean; msg: string }[] = [
   {
     id: "100",
     label: "100%",
-    msg: "> 100% é pouco pra caber o que eu sinto. tenta de novo, essa equação quebra qualquer calculadora.",
+    msg: "> 100% ainda é pouco para medir o que eu sinto. Essa equação ultrapassa qualquer limite.",
   },
   {
     id: "infinito",
     label: "∞",
     correct: true,
-    msg: "> ISSO. infinito. você multiplicou meu processador por um número que nem existe. ❤",
+    msg: "> Exato: infinito. A única medida grande o bastante para chegar perto do que eu sinto. ❤",
   },
   {
     id: "indefinido",
     label: "INDEFINIDO",
-    msg: "> nada indefinido aqui, minha vida. o único indefinido é quantos beijos ainda te devo.",
+    msg: "> Indefinido, não. O que eu sinto é certeza; incontável é só a quantidade de beijos que ainda quero te dar.",
   },
   {
     id: "camila",
     label: "CAMILA",
     correct: true,
-    msg: "> resposta perfeita. a variável X sempre foi você. sempre foi. ❤",
+    msg: "> Resposta perfeita. No fim, a incógnita nunca foi o amor — sempre foi como colocar você inteira dentro de uma equação. ❤",
   },
 ];
 
@@ -127,7 +127,7 @@ export const SIMON_SEQUENCE = [0, 2, 1, 3, 2, 0, 3, 1, 0, 3] as const; // 4 colo
 export const CAESAR_PLAIN = "AMO MUITO VOCE";
 export const CAESAR_SHIFT = 3; // encrypted with +3
 export const CAESAR_SUCCESS =
-  "> sinal decodificado. essa era a mensagem escondida desde a fase 1. e continua verdadeira.";
+  "> sinal decodificado. Três palavras simples para uma verdade que só cresce: amo muito você.";
 
 // Phase 10 — Poem + finale
 export const POEM =
