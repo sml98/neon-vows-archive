@@ -9,21 +9,21 @@ interface Props {
   onBeep: (k: "click" | "success") => void;
 }
 
-const LETTER_TEXT = `Meu bem, se você chegou até aqui, é porque você é teimosa que nem eu. E é por isso que te amo.
+const LETTER_TEXT = `Meu bem, se você chegou até aqui, é porque é tão teimosa quanto eu. Talvez seja justamente por isso que a nossa história nunca tenha sido comum.
 
-Antes daquele encontro, a gente já tinha conseguido discutir, parar de se falar, voltar por causa de um story no Instagram e discutir outra vez. Nem tínhamos nos visto e já parecíamos dois protagonistas teimosos tentando decidir quem mandava no roteiro.
+Antes daquele encontro, nós já tínhamos discutido, parado de nos falar, voltado por causa de um story no Instagram e discutido outra vez. Nem tínhamos nos visto e já parecíamos dois protagonistas teimosos disputando o controle da mesma história.
 
-Então chegou o shopping. Você apareceu com um copinho de café nas mãos e eu lembro como se fosse ontem: a cor da sua pele, o brilho dos seus olhos, o seu corpo, a sua altura. Tudo em você me fascinou antes mesmo que eu entendesse onde aquilo ia dar.
+Então chegou o dia do shopping. Você apareceu com um copinho de café nas mãos, e eu ainda me lembro da sua pele, do brilho dos seus olhos, do seu corpo, da sua altura. Tudo em você me prendeu antes mesmo que eu entendesse onde aquilo iria nos levar.
 
-Eu só queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink} numa tarde de semana. Você achou uma loucura e chegou a desconfiar que eu fosse alcoólatra. No fim, bebeu comigo. Essa parte ainda me faz rir: você questiona a minha maluquice e, quando eu vejo, já está dividindo ela comigo.
+Eu só queria experimentar um ${EXPERIENCE.relationship.firstMeeting.samuelDrink} numa tarde de semana. Você achou aquilo uma loucura e até desconfiou que eu fosse alcoólatra. No fim, bebeu comigo. Essa lembrança ainda me faz rir: você questiona as minhas ideias e, quando percebo, já está dividindo a maluquice comigo.
 
-Eu fiquei receoso de tentar te beijar. Mas tomei coragem, você permitiu, correspondeu e me beijou de volta. Naquele instante, a discussão, o orgulho e o medo perderam a conexão. Ficou só aquela sensação boa entre nós.
+Eu tive medo de tentar beijar você. Mas criei coragem, você correspondeu e, naquele instante, a discussão, o orgulho e a insegurança perderam o sinal. Ficou apenas aquela sensação boa entre nós.
 
-Depois você voltou de Uber e eu fui a pé para o apartamento. Eu não estava acostumado a caminhar e cheguei a ganhar calos nos pés. Foi o primeiro dano físico oficialmente causado por me apaixonar por você — e eu repetiria todo o caminho.
+Depois, você voltou de Uber e eu fui a pé até o apartamento. Como não estava acostumado a caminhar, ganhei calos nos pés. Foi o primeiro dano físico oficialmente causado por me apaixonar por você — e eu percorreria o mesmo caminho outra vez.
 
-Nós nos despedimos felizes. E cada dia contigo desde então é uma fase que eu não quero pular. Cada beijo é um save point. Esta aventura é só para te lembrar que eu guardei os detalhes — inclusive os que parecem pequenos demais para qualquer outra pessoa.
+Nós nos despedimos felizes. Desde então, cada dia com você é uma fase que eu não quero pular, e cada beijo virou um save point. Fiz esta aventura para lembrar que guardei os detalhes — até aqueles que pareceriam pequenos demais para qualquer outra pessoa.
 
-Te amo, minha vida. Agora continua — ainda tem surpresa.
+Eu amo você, minha vida. Continue — a nossa história ainda guarda surpresas.
 — ${EXPERIENCE.playerOne.name}`;
 
 export function Phase04Letter({ onNext, onBeep }: Props) {

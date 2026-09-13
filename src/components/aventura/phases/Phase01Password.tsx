@@ -40,7 +40,7 @@ export function Phase01Password({ onSolved, onBeep, gift }: Props) {
     const ok = PASSWORD_ANSWERS.some((a) => normalize(a) === normalize(value));
     if (ok) {
       onBeep("success");
-      setMessage("> senha aceita... mas eu já sabia que era você desde o primeiro pixel. ❤");
+      setMessage("> acesso liberado. Mas, para ser sincero, meu coração reconheceu você antes mesmo da senha. ❤");
       window.setTimeout(onSolved, 3000);
     } else {
       const nextErrors = Math.min(MAX_HP, errors + 1);
@@ -62,21 +62,20 @@ export function Phase01Password({ onSolved, onBeep, gift }: Props) {
         <p>
           &gt; SISTEMA CARREGANDO...
           <br />
-          &gt; detectando presença... {EXPERIENCE.playerTwo.nickname} identificada.
+          &gt; presença detectada... {EXPERIENCE.playerTwo.nickname} reconhecida.
           <br />
           {(gift === "chocolate" || gift === "both") && (
             <>
-              &gt; artefato físico detectado: chocolate vinculado à {EXPERIENCE.gift.favoriteFruit},
-              sua fruta preferida.
+              &gt; artefato detectado: chocolate com {EXPERIENCE.gift.favoriteFruit}, sua fruta
+              preferida.
               <br />
             </>
           )}
-          &gt; aviso: este terminal contém uma mensagem classificada.
+          &gt; aviso: este terminal guarda uma mensagem confidencial.
           <br />
           &gt; nível de amor: ACIMA DO MÁXIMO PERMITIDO.
           <br />
-          &gt; para acessar, insira o código secreto. Já que me amas, saberás tranquilamente a
-          resposta!
+          &gt; para entrar, digite a data em que a nossa história saiu da tela e começou de verdade.
         </p>
       </CyberTextBox>
 
